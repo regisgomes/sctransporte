@@ -1,4 +1,4 @@
 Listening for transport dt_socket at address: 8000
-20:30:13,187 INFO  ~ Starting /home/rafaelholanda90/workspace/SCTransporte
+20:30:13,187 INFO  ~ Starting SCTransporte
 20:30:13,736 WARN  ~ You're running Play! in DEV mode
 20:30:13,808 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...

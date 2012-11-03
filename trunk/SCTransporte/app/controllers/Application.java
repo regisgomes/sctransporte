@@ -14,8 +14,6 @@ public class Application extends Controller {
     }
 
     public static void cadastroVeiculo(String login, String pwd) {
-    	
-    	if (login == "rafael" && pwd == "123")
     		render();
     	
     }
