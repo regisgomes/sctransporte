@@ -1,0 +1,59 @@
+<html>
+<head>
+	<div style="text-align: center; background-color: white; color: black;">
+		SCTransporte
+	</div>
+</head>
+<body style="background-color: graytext; color: white;  text-align: center;">
+	<form>
+		<div style=" padding-top: 5%; border: white;">
+			<table style="width: 100%; text-align: center; border: white; padding-left: 35%; padding-right: 35%"  >
+				<thead style="text-align: center; border: white; background-color: #df5c26;">
+					<tr>
+						<td colspan="2">
+							Cadastro de Veículo
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th style="text-align: right;">Marca:</th>
+						<td style="text-align: left;"> 
+						<select name="modelos">
+							<option value="init" selected="selected"> -- SELECIONE -- </option>
+							<option value="fiat">FIAT</option>
+							<option value="wolksvagem" >WOLKSVAGEM</option>
+							<option value="ford">FORD</option>	
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<th style="text-align: right;">Tipo de Veículo:</th>
+						<td style="text-align: left;">
+						<select name="modelos">
+							<option value="init" selected="selected"> -- SELECIONE -- </option>
+							<option value="caminhao">CAMINHÃO</option>
+							<option value="automovel" >AUTOMÓVEL</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<th style="text-align: right;">Placa:</th>
+						<td style="text-align: left;">
+							<input type="text" name="placa">
+						</td>
+					</tr>
+				</tbody>
+				<tfoot style="background-color: black;">
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="Cadastrar"/>
+							<input type="reset" value="Limpar Campos"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>			
+	</form>
+</body>
+</html>
