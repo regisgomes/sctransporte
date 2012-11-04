@@ -16,10 +16,6 @@ import play.db.jpa.Model;
  */
 @Entity
 public class Usuario extends Model {
-
-	@Id
-	@Column (name = "id_usuario")
-	private Long id;
 	
 	private String login;
 	
@@ -32,15 +28,6 @@ public class Usuario extends Model {
 	private String endereco;
 	
 	private String telefone;
-	
-	@Override
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getLogin() {
 		return login;

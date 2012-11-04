@@ -10,12 +10,17 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        List<Usuario> usuarios = Usuario.all().fetch();
-        render(usuarios);
+        render();
     }
     
-    public static void cadastroVeiculo() {
-    	render();
+    public static void cadastroVeiculo(String login, String pwd) {
+    	Usuario user = Usuario.find("login", login).first();
+    	if(user != null && user.getPass().equals(pwd)){
+    		render();
+    	}
+    	else{
+    		index();
+    	}
     }
 
 }
