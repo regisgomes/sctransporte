@@ -13,10 +13,10 @@ public class Application extends Controller {
         render();
     }
     
-    public static void cadastroVeiculo(String login, String pwd) {
+    public static void menu(String login, String pwd) {
     	Usuario user = Usuario.find("login", login).first();
     	if(user != null && user.getPass().equals(pwd)){
-    		render();
+    		render(user);
     	}
     	else{
     		index();
