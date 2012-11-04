@@ -13,7 +13,7 @@
   <table id="TAB1" populated="true" UUID="0f266fb4-a9f0-4b7a-bbea-c25d0d7c00ab" name="usuario" objectType="TABLE" physicalName="usuario" >
    <remarks></remarks>
    <folder id="FOLTAB11" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL2" populated="true" UUID="ead3ad07-2562-4528-91cf-7eb5d49bfeee" autoIncrement="true" autoIncrementSequenceName="usuario_id_usuario_seq" defaultValue="" name="id_usuario" nullable="0" physicalName="id_usuario" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL2" populated="true" UUID="ead3ad07-2562-4528-91cf-7eb5d49bfeee" autoIncrement="true" autoIncrementSequenceName="usuario_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL3" populated="true" UUID="cabe0c11-2db1-4731-b708-bf8d6f822e3c" autoIncrement="false" autoIncrementSequenceName="usuario_login_seq" defaultValue="" name="login" nullable="0" physicalName="login" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -41,20 +41,20 @@
     </folder>
     <folder id="FOLTAB14" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX9" populated="true" UUID="61e7b095-36d8-4d25-96d5-f7dce20bd63b" clustered="false" name="usuario_pk" physicalName="usuario_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC10" populated="true" UUID="4506995c-00ac-40fb-a8f2-73151618da7a" ascendingOrDescending="UNSPECIFIED" column-ref="COL2" name="id_usuario" physicalName="id_usuario" />
+     <index-column id="IDC10" populated="true" UUID="4506995c-00ac-40fb-a8f2-73151618da7a" ascendingOrDescending="UNSPECIFIED" column-ref="COL2" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB11" populated="true" UUID="a0c079e7-3322-4966-bf28-a1a0b3ca5d74" name="funcionario" objectType="TABLE" physicalName="funcionario" >
    <remarks></remarks>
    <folder id="FOLTAB111" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL12" populated="true" UUID="3972cc5a-0ac6-49a3-9d8a-1c04e929099f" autoIncrement="true" autoIncrementSequenceName="funcionario_id_funcionario_seq" defaultValue="" name="id_funcionario" nullable="0" physicalName="id_funcionario" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL12" populated="true" UUID="3972cc5a-0ac6-49a3-9d8a-1c04e929099f" autoIncrement="true" autoIncrementSequenceName="funcionario_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL13" populated="true" UUID="de0d51c5-f0c2-4b71-afbb-2aedda72fdbc" autoIncrement="false" autoIncrementSequenceName="usuario_id_usuario_seq_1" defaultValue="" name="id_usuario" nullable="0" physicalName="id_usuario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL13" populated="true" UUID="de0d51c5-f0c2-4b71-afbb-2aedda72fdbc" autoIncrement="false" autoIncrementSequenceName="usuario_id_usuario_usuario_seq_1" defaultValue="" name="id_usuario" nullable="0" physicalName="id_usuario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL14" populated="true" UUID="53a07c88-7ce0-4758-8258-823311a9ef98" autoIncrement="false" autoIncrementSequenceName="cargo_New Column_seq" defaultValue="" name="id_cargo" nullable="0" physicalName="id_cargo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL14" populated="true" UUID="53a07c88-7ce0-4758-8258-823311a9ef98" autoIncrement="false" autoIncrementSequenceName="cargo_New Column_seq" defaultValue="" name="id_cargo" nullable="0" physicalName="id_cargo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     </folder>
@@ -64,14 +64,14 @@
     </folder>
     <folder id="FOLTAB114" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX15" populated="true" UUID="af6d57d6-624d-4b8a-987b-d99430c7a8d4" clustered="false" name="funcionario_pk" physicalName="funcionario_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC16" populated="true" UUID="c55f1086-3b16-4ae8-a82c-f520e096ce53" ascendingOrDescending="UNSPECIFIED" column-ref="COL12" name="id_funcionario" physicalName="id_funcionario" />
+     <index-column id="IDC16" populated="true" UUID="c55f1086-3b16-4ae8-a82c-f520e096ce53" ascendingOrDescending="UNSPECIFIED" column-ref="COL12" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB17" populated="true" UUID="189d4db3-5887-4bce-90ff-6c7362c5c052" name="cargo" objectType="TABLE" physicalName="cargo" >
    <remarks></remarks>
    <folder id="FOLTAB171" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL18" populated="true" UUID="3ec57268-3edd-42e2-a379-a5a03dcc2409" autoIncrement="true" autoIncrementSequenceName="cargo_id_cargo_seq" defaultValue="" name="id_cargo" nullable="0" physicalName="id_cargo" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL18" populated="true" UUID="3ec57268-3edd-42e2-a379-a5a03dcc2409" autoIncrement="true" autoIncrementSequenceName="cargo_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL19" populated="true" UUID="a82657b6-ccef-4abb-8508-97a817246eaa" autoIncrement="false" autoIncrementSequenceName="cargo_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -87,26 +87,26 @@
     </folder>
     <folder id="FOLTAB174" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX21" populated="true" UUID="7b88a3f7-82f8-43ad-bfb9-f720627d2e3f" clustered="false" name="cargo_pk" physicalName="cargo_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC22" populated="true" UUID="199a7d82-9465-4553-baf3-979950ce1a23" ascendingOrDescending="UNSPECIFIED" column-ref="COL18" name="id_cargo" physicalName="id_cargo" />
+     <index-column id="IDC22" populated="true" UUID="199a7d82-9465-4553-baf3-979950ce1a23" ascendingOrDescending="UNSPECIFIED" column-ref="COL18" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB23" populated="true" UUID="43f72965-0078-4c93-8cc6-66486ca2a07d" name="entrega" objectType="TABLE" physicalName="entrega" >
    <remarks></remarks>
    <folder id="FOLTAB231" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL24" populated="true" UUID="e24aff08-8362-4b1a-b816-c4bbf0495289" autoIncrement="true" autoIncrementSequenceName="entrega_id_entrega_seq" defaultValue="" name="id_entrega" nullable="0" physicalName="id_entrega" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL24" populated="true" UUID="e24aff08-8362-4b1a-b816-c4bbf0495289" autoIncrement="true" autoIncrementSequenceName="entrega_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL25" populated="true" UUID="f9e94516-0485-44fc-867f-2802a4789324" autoIncrement="false" autoIncrementSequenceName="viagem_id_viagem_seq" defaultValue="" name="id_viagem" nullable="0" physicalName="id_viagem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL25" populated="true" UUID="f9e94516-0485-44fc-867f-2802a4789324" autoIncrement="false" autoIncrementSequenceName="viagem_id_viagem_viagem_seq" defaultValue="" name="id_viagem" nullable="0" physicalName="id_viagem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL26" populated="true" UUID="4628dc78-3253-4c98-9802-c8b47365f70d" autoIncrement="false" autoIncrementSequenceName="cliente_id_cliente_destino_seq" defaultValue="" name="id_cliente_destino" nullable="0" physicalName="id_cliente_destino" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL26" populated="true" UUID="4628dc78-3253-4c98-9802-c8b47365f70d" autoIncrement="false" autoIncrementSequenceName="cliente_id_cliente_destino_seq" defaultValue="" name="id_cliente_destino" nullable="0" physicalName="id_cliente_destino" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL27" populated="true" UUID="211533a4-52f2-42a7-a2d4-c2900d6723fb" autoIncrement="false" autoIncrementSequenceName="cliente_id_cliente_origem_seq" defaultValue="" name="id_cliente_origem" nullable="0" physicalName="id_cliente_origem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL27" populated="true" UUID="211533a4-52f2-42a7-a2d4-c2900d6723fb" autoIncrement="false" autoIncrementSequenceName="cliente_id_cliente_origem_seq" defaultValue="" name="id_cliente_origem" nullable="0" physicalName="id_cliente_origem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL28" populated="true" UUID="6bbb9592-a6ff-482d-919f-948a97cd3c50" autoIncrement="false" autoIncrementSequenceName="funcionario_id_funcionario_seq_1" defaultValue="" name="id_funcionario" nullable="0" physicalName="id_funcionario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL28" populated="true" UUID="6bbb9592-a6ff-482d-919f-948a97cd3c50" autoIncrement="false" autoIncrementSequenceName="funcionario_id_funcionario_funcionario_seq_1" defaultValue="" name="id_funcionario" nullable="0" physicalName="id_funcionario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL29" populated="true" UUID="8e404708-f4ab-40bf-97e7-fb442a79c79c" autoIncrement="false" autoIncrementSequenceName="entrega_cod_rastreio_seq" defaultValue="" name="cod_rastreio" nullable="0" physicalName="cod_rastreio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -131,14 +131,14 @@
     </folder>
     <folder id="FOLTAB234" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX34" populated="true" UUID="e401eba7-a15c-4aad-a5e1-c84f0a615936" clustered="false" name="entrega_pk" physicalName="entrega_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC35" populated="true" UUID="c0954f84-3083-4b88-85bd-958ccb848b4e" ascendingOrDescending="UNSPECIFIED" column-ref="COL24" name="id_entrega" physicalName="id_entrega" />
+     <index-column id="IDC35" populated="true" UUID="c0954f84-3083-4b88-85bd-958ccb848b4e" ascendingOrDescending="UNSPECIFIED" column-ref="COL24" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB36" populated="true" UUID="c644fa9a-6bfb-4e69-ae37-5c4821e056b4" name="cliente" objectType="TABLE" physicalName="cliente" >
    <remarks></remarks>
    <folder id="FOLTAB361" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL37" populated="true" UUID="c6c2e3ac-a617-44a9-94d5-edf9ebd982a6" autoIncrement="true" autoIncrementSequenceName="cliente_id_cliente_seq" defaultValue="" name="id_cliente" nullable="0" physicalName="id_cliente" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL37" populated="true" UUID="c6c2e3ac-a617-44a9-94d5-edf9ebd982a6" autoIncrement="true" autoIncrementSequenceName="cliente_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL38" populated="true" UUID="1133b3e0-fcad-4968-9ad7-f0e418dc96fc" autoIncrement="false" autoIncrementSequenceName="cliente_telefone_seq" defaultValue="" name="telefone" nullable="0" physicalName="telefone" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -163,20 +163,20 @@
     </folder>
     <folder id="FOLTAB364" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX43" populated="true" UUID="6b66ed01-9a45-463f-a0bd-268cfa6a8def" clustered="false" name="cliente_pk" physicalName="cliente_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC44" populated="true" UUID="36499241-e7df-46f7-a8d9-c3d0cc572f84" ascendingOrDescending="UNSPECIFIED" column-ref="COL37" name="id_cliente" physicalName="id_cliente" />
+     <index-column id="IDC44" populated="true" UUID="36499241-e7df-46f7-a8d9-c3d0cc572f84" ascendingOrDescending="UNSPECIFIED" column-ref="COL37" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB45" populated="true" UUID="e9f21ba9-38a1-4836-ae29-dd888cf6aac8" name="viagem" objectType="TABLE" physicalName="viagem" >
    <remarks></remarks>
    <folder id="FOLTAB451" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL46" populated="true" UUID="24557737-f9b8-4415-85b3-234b8cbf75ab" autoIncrement="true" autoIncrementSequenceName="viagem_id_viagem_seq_1" defaultValue="" name="id_viagem" nullable="0" physicalName="id_viagem" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL46" populated="true" UUID="24557737-f9b8-4415-85b3-234b8cbf75ab" autoIncrement="true" autoIncrementSequenceName="viagem_id_seq_1" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL47" populated="true" UUID="b3d8d4dd-887c-4efb-8e7e-2edf27feb24f" autoIncrement="false" autoIncrementSequenceName="carro_id_carro_seq" defaultValue="" name="id_carro" nullable="0" physicalName="id_carro" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL47" populated="true" UUID="b3d8d4dd-887c-4efb-8e7e-2edf27feb24f" autoIncrement="false" autoIncrementSequenceName="carro_id_carro_carro_seq" defaultValue="" name="id_carro" nullable="0" physicalName="id_carro" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL48" populated="true" UUID="1fe207df-d3cb-4023-bfeb-d7cfbcf34f76" autoIncrement="false" autoIncrementSequenceName="funcionario_id_motorista_seq" defaultValue="" name="id_motorista" nullable="0" physicalName="id_motorista" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL48" populated="true" UUID="1fe207df-d3cb-4023-bfeb-d7cfbcf34f76" autoIncrement="false" autoIncrementSequenceName="funcionario_id_motorista_seq" defaultValue="" name="id_motorista" nullable="0" physicalName="id_motorista" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL49" populated="true" UUID="4506ca39-5d5b-47a7-8329-6c7a6225297a" autoIncrement="false" autoIncrementSequenceName="viagem_data_saida_seq" defaultValue="" name="data_saida" nullable="0" physicalName="data_saida" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
@@ -198,20 +198,20 @@
     </folder>
     <folder id="FOLTAB454" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX53" populated="true" UUID="9d41855d-21d0-48bd-b0b4-6e5bdcd31dba" clustered="false" name="viagem_pk" physicalName="viagem_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC54" populated="true" UUID="6641a285-5603-4fb0-b54a-a753360303ab" ascendingOrDescending="UNSPECIFIED" column-ref="COL46" name="id_viagem" physicalName="id_viagem" />
+     <index-column id="IDC54" populated="true" UUID="6641a285-5603-4fb0-b54a-a753360303ab" ascendingOrDescending="UNSPECIFIED" column-ref="COL46" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB55" populated="true" UUID="08d6b365-cbed-402d-9624-19c4044f543f" name="carro" objectType="TABLE" physicalName="carro" >
    <remarks></remarks>
    <folder id="FOLTAB551" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL56" populated="true" UUID="a827aea8-baa1-4179-8df5-ecf3f5e9d84b" autoIncrement="true" autoIncrementSequenceName="carro_id_carro_seq_1" defaultValue="" name="id_carro" nullable="0" physicalName="id_carro" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL56" populated="true" UUID="a827aea8-baa1-4179-8df5-ecf3f5e9d84b" autoIncrement="true" autoIncrementSequenceName="carro_id_seq_1" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL57" populated="true" UUID="d55d32f7-b05b-4e1b-8ee8-d6a8e401ac27" autoIncrement="false" autoIncrementSequenceName="modelo_id_modelo_seq" defaultValue="" name="id_modelo" nullable="0" physicalName="id_modelo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL57" populated="true" UUID="d55d32f7-b05b-4e1b-8ee8-d6a8e401ac27" autoIncrement="false" autoIncrementSequenceName="modelo_id_modelo_modelo_seq" defaultValue="" name="id_modelo" nullable="0" physicalName="id_modelo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL58" populated="true" UUID="b402e4f3-2faa-407a-856e-9edaa4c5ef9a" autoIncrement="false" autoIncrementSequenceName="tipo_veiculo_id_tipo_veiculo_seq" defaultValue="" name="id_tipo_veiculo" nullable="0" physicalName="id_tipo_veiculo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL58" populated="true" UUID="b402e4f3-2faa-407a-856e-9edaa4c5ef9a" autoIncrement="false" autoIncrementSequenceName="tipo_veiculo_id_tipo_veiculo_tipo_veiculo_seq" defaultValue="" name="id_tipo_veiculo" nullable="0" physicalName="id_tipo_veiculo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL59" populated="true" UUID="b45028a1-8641-495d-9653-d11be0129e0e" autoIncrement="false" autoIncrementSequenceName="carro_quilometragem_seq" defaultValue="" name="quilometragem" nullable="0" physicalName="quilometragem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -233,14 +233,14 @@
     </folder>
     <folder id="FOLTAB554" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX63" populated="true" UUID="a42e72f3-4f35-48c6-970c-5f343de1ad1d" clustered="false" name="carro_pk" physicalName="carro_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC64" populated="true" UUID="36cecabb-2cc1-4ddc-87c8-d4f48295fdd5" ascendingOrDescending="UNSPECIFIED" column-ref="COL56" name="id_carro" physicalName="id_carro" />
+     <index-column id="IDC64" populated="true" UUID="36cecabb-2cc1-4ddc-87c8-d4f48295fdd5" ascendingOrDescending="UNSPECIFIED" column-ref="COL56" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB65" populated="true" UUID="6273b4f8-2f2a-44a6-9263-9c89e22f041c" name="tipo_veiculo" objectType="TABLE" physicalName="tipo_veiculo" >
    <remarks></remarks>
    <folder id="FOLTAB651" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL66" populated="true" UUID="a64a3dcf-7816-4cf3-a269-8f88a0da9f07" autoIncrement="true" autoIncrementSequenceName="tipo_veiculo_id_tipo_veiculo_seq_1" defaultValue="" name="id_tipo_veiculo" nullable="0" physicalName="id_tipo_veiculo" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL66" populated="true" UUID="a64a3dcf-7816-4cf3-a269-8f88a0da9f07" autoIncrement="true" autoIncrementSequenceName="tipo_veiculo_id_seq_1" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL67" populated="true" UUID="b9b7ecfa-6c5c-44ec-aec9-c0d3cf735589" autoIncrement="false" autoIncrementSequenceName="tipo_veiculo_categoria_seq" defaultValue="" name="categoria" nullable="0" physicalName="categoria" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -253,17 +253,17 @@
     </folder>
     <folder id="FOLTAB654" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX68" populated="true" UUID="856ef562-2485-449b-8e33-e035d1a43b4c" clustered="false" name="tipo_veiculo_pk" physicalName="tipo_veiculo_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC69" populated="true" UUID="76ceeb57-cd35-4cd3-bc71-83a3133f3c1e" ascendingOrDescending="UNSPECIFIED" column-ref="COL66" name="id_tipo_veiculo" physicalName="id_tipo_veiculo" />
+     <index-column id="IDC69" populated="true" UUID="76ceeb57-cd35-4cd3-bc71-83a3133f3c1e" ascendingOrDescending="UNSPECIFIED" column-ref="COL66" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB70" populated="true" UUID="8870e1d2-5bae-49fd-a51b-7d9ad990f3e5" name="modelo" objectType="TABLE" physicalName="modelo" >
    <remarks></remarks>
    <folder id="FOLTAB701" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL71" populated="true" UUID="589d8b4e-61f2-4e23-b419-f16e16dcc333" autoIncrement="true" autoIncrementSequenceName="modelo_id_modelo_seq_1" defaultValue="" name="id_modelo" nullable="0" physicalName="id_modelo" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL71" populated="true" UUID="589d8b4e-61f2-4e23-b419-f16e16dcc333" autoIncrement="true" autoIncrementSequenceName="modelo_id_seq_1" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL72" populated="true" UUID="3155ea74-f5be-47a5-8006-ea5dbc6913b5" autoIncrement="false" autoIncrementSequenceName="marca_id_marca_seq" defaultValue="" name="id_marca" nullable="0" physicalName="id_marca" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL72" populated="true" UUID="3155ea74-f5be-47a5-8006-ea5dbc6913b5" autoIncrement="false" autoIncrementSequenceName="marca_id_marca_marca_seq" defaultValue="" name="id_marca" nullable="0" physicalName="id_marca" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL73" populated="true" UUID="c715e76d-7d46-4f56-b26c-ae6e7719a864" autoIncrement="false" autoIncrementSequenceName="modelo_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -276,14 +276,14 @@
     </folder>
     <folder id="FOLTAB704" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX74" populated="true" UUID="e3be4112-08f3-49ac-9e8c-54851f38b04b" clustered="false" name="modelo_pk" physicalName="modelo_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC75" populated="true" UUID="34000e1d-f3c9-418f-8d04-421bbdfd2c63" ascendingOrDescending="UNSPECIFIED" column-ref="COL71" name="id_modelo" physicalName="id_modelo" />
+     <index-column id="IDC75" populated="true" UUID="34000e1d-f3c9-418f-8d04-421bbdfd2c63" ascendingOrDescending="UNSPECIFIED" column-ref="COL71" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
   <table id="TAB76" populated="true" UUID="ede6fbf7-ea21-4003-ab86-3d486bfc34b8" name="marca" objectType="TABLE" physicalName="marca" >
    <remarks></remarks>
    <folder id="FOLTAB761" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL77" populated="true" UUID="9ccd2b19-b35b-4a8c-bffc-b515e854d7fa" autoIncrement="true" autoIncrementSequenceName="marca_id_marca_seq_1" defaultValue="" name="id_marca" nullable="0" physicalName="id_marca" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL77" populated="true" UUID="9ccd2b19-b35b-4a8c-bffc-b515e854d7fa" autoIncrement="true" autoIncrementSequenceName="marca_id_seq_1" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL78" populated="true" UUID="7fce89d1-23c5-40a0-9856-3c19c198139e" autoIncrement="false" autoIncrementSequenceName="marca_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -296,7 +296,7 @@
     </folder>
     <folder id="FOLTAB764" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX79" populated="true" UUID="e85ac7f2-26d3-43da-a489-4ee3280817f1" clustered="false" name="marca_pk" physicalName="marca_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC80" populated="true" UUID="f033e592-dce9-4035-a130-5f02b8559ba9" ascendingOrDescending="UNSPECIFIED" column-ref="COL77" name="id_marca" physicalName="id_marca" />
+     <index-column id="IDC80" populated="true" UUID="f033e592-dce9-4035-a130-5f02b8559ba9" ascendingOrDescending="UNSPECIFIED" column-ref="COL77" name="id" physicalName="id" />
     </index>
    </folder>
   </table>
@@ -336,7 +336,7 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="0.8408964152537146" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
