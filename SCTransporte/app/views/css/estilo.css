@@ -1,0 +1,111 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+@font-face {
+    font-family: segoe;
+    src: url(../fonts/segoeui.ttf);
+    font-weight: normal;
+}
+
+
+@font-face {
+    font-family: segoelight;
+    src: url(../fonts/segoeuil.ttf);
+    font-weight: lighter;
+}
+
+body {
+	background: url(../img/body_bg.png) repeat;
+	font-family: segoelight, segoe, Arial;
+}
+
+#wrapper {
+	width: 980px;
+	height: auto;
+	min-height: 100%;
+	overflow: hidden;
+	padding: 10px;
+}
+
+#logomarca {
+	background: url(../img/logomarca.png) no-repeat;
+	width: 254px;
+	height: 63px;
+	margin-top: 50px;
+}
+
+#login table {
+	margin-top: 20px;
+}
+
+#login table tr td.cadeado {
+	background: url(../img/cadeado.png) no-repeat 70px 0px;
+	height: 30px;
+	text-indent: 40px;
+}
+
+input.input {
+	height: 20px;
+	width: 198px;
+	margin: 5px 0px;
+	padding: 5px;
+}
+
+select {
+	width: 210px;
+}
+
+input.button {
+	background: #F60;
+	border: 0;
+	color: white;
+	padding: 7px 20px;
+	margin: 6px 10px 0px 0px;
+	height: auto;
+	cursor: pointer;
+	width: auto;
+}
+
+input.button:hover {
+	background: #b01e00;
+}
+
+#content {
+	width: 960px;
+	height: auto;
+	min-height: 100%;
+	overflow: hidden;
+	padding: 20px;
+	background: #ededed;
+}
+
+#titleBar {
+	margin-top: 20px;
+	width: 960px;
+	background: #F60;
+	padding: 10px 20px;
+	color: white;
+}
+
+#titleBar span {
+	color: #ffe401;
+	font-weight: normal	;
+}
+
+#content textarea {
+	width: 430px;
+	height: 200px;
+	padding: 5px;
+}
+
+#footer {
+	width: 960px;
+	background: #F60;
+	padding: 5px 20px;
+	background: #484848;
+	color: white;
+	font-size: 12px;
+	text-align: center;
+}
