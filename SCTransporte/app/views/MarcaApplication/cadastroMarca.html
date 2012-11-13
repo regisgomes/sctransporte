@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SC Transportes - Cadastro Veículo</title>
+#{set 'moreStyles'}
+        #{stylesheet 'main.css' /}
+#{/set}
+#{get 'moreStyles' /}
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+        <div id="logomarca">
+        </div><!-- #logomarca-->
+        
+        <div id="titleBar">
+            Cadastro > <span>Nova Marca</span>
+        </div><!-- #titleBar -->
+        
+        <div id="content">
+        	<form action="@{MarcaApplication.cadastrarMarca()}" method="POST">
+	        	<div style="color: red; font-weight: bold; text-align: center;">
+	        		${msgErro != null ? msgErro : ''}
+	        	</div>
+	            <table width="600" cellpadding="0" cellspacing="5">
+	                <tr>
+	                    <td valign="top">Marca:</td>
+	                    <td><input class="input" type="text" name="nomeMarca" /></td>
+	                </tr>
+	                <tr>
+	                    <td></td>
+	                    <td>
+	                        <input type="submit" class="button" value="Cadastrar" />
+	                        <input type="reset" class="button" value="Limpar Campos" />
+	                    </td>
+	                </tr>
+	            </table>
+            </form>
+        </div><!-- #content -->
+      
+        <div id="footer">
+        	2012 - SC Transporte - Todos os direitos reservados
+        </div><!-- #footer -->
+        
+	</div><!-- #wrapper -->
+
+</body>
+</html>

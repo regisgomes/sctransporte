@@ -9,18 +9,30 @@ import models.*;
 
 public class Application extends Controller {
 
-    public static void index() {
-        render();
+	private static Usuario usuarioLogado = null;
+	
+    public static void index(String msgErro) {
+        render(msgErro);
     }
     
-    public static void menu(String login, String pwd) {
+    public static void logar(String login, String pwd) {
     	Usuario user = Usuario.find("login", login).first();
     	if(user != null && user.getPass().equals(pwd)){
-    		render(user);
+    		usuarioLogado = user;
+    		menu(user, null);
     	}
     	else{
-    		index();
+    		String msgErro = "Login/Senha inválidos!";
+    		index(msgErro);
     	}
     }
+    
+    public static void menu(Usuario user, String msgInformation) {
+   		render(user, msgInformation);
+    }
+
+	public static Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
 
 }

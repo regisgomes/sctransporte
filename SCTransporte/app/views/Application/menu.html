@@ -22,9 +22,19 @@
         
         <div id="content">
         	<form action="@{Application.menu()}" method="POST">
+        	<div style="color: green; font-weight: bold; text-align: center;">
+        		${msgInformation != null ? msgInformation : ''}
+        	</div>
 	            <table width="600" cellpadding="0" cellspacing="5">
 					<tr>
 						<td>Olá, ${user.nome}!</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="@{MarcaApplication.cadastroMarca()}">
+								<input type="button" class="button" value="Cadastrar Marca"/>
+							</a>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -34,7 +44,9 @@
 						</td>
 					</tr>
 				</table>
-				<input type="submit" class="button" value="Sair" />
+				<a href="@{Application.index()}">
+					<input type="button" class="button" value="Sair" />
+				</a>
 			</form>
 		</div>
 	</div>
