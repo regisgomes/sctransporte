@@ -6,6 +6,7 @@ package controllers;
 import java.util.List;
 
 import models.Marca;
+import models.Tipo;
 import play.mvc.Controller;
 
 /**
@@ -16,7 +17,8 @@ public class VeiculoApplication extends Controller {
 
 	public static void cadastroVeiculo() {
 		List<Marca> marcas = Marca.all().fetch();
-		render(marcas);
+		List<Tipo> tipos = Tipo.all().fetch();
+		render(marcas, tipos);
 	}
 	
 }
