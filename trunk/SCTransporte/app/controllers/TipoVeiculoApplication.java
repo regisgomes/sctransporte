@@ -19,11 +19,11 @@ public class TipoVeiculoApplication extends Controller{
 			Tipo tipo = new Tipo(nomeTipo);
 			tipo.save();
 		} else {
-			String msgErro = "Informe o nome para a Marca!";
+			String msgErro = "Informe o nome para o Tipo!";
 			cadastroTipoVeiculo(msgErro);
 		}
 		
-		String msgInformation = "Marca Cadastrada com sucesso!";
+		String msgInformation = "Tipo de veiculo cadastrado com sucesso!";
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 }
