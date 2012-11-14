@@ -42,8 +42,9 @@
                     <td>
 						<select name="modelos">
 							<option value="init" selected="selected"> -- SELECIONE -- </option>
-							<option value="caminhao">CAMINHÃO</option>
-							<option value="automovel" >AUTOMÓVEL</option>
+							#{list items:tipos, as:'tipo'}
+							<option value="${tipo.nome}">${tipo.nome}</option>
+							#{/list}
 						</select>
                     </td>
                 </tr>
