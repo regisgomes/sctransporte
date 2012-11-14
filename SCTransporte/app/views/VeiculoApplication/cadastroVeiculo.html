@@ -31,9 +31,9 @@
                     <td>
                         <select name="modelos">
 							<option value="init" selected="selected"> -- SELECIONE -- </option>
-							<option value="fiat">FIAT</option>
-							<option value="wolksvagem" >WOLKSVAGEM</option>
-							<option value="ford">FORD</option>	
+							#{list items:marcas, as:'marca'}
+							<option value="${marca.nome}">${marca.nome}</option>
+							#{/list}
 						</select>                   
                     </td>
                 </tr>
