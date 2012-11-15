@@ -20,7 +20,7 @@
             Principal > <span>Menu</span>
         </div><!-- #titleBar -->
         
-       	<form action="@{Application.menu()}" method="POST">
+       	<form action="@{Application.menu()}" method="post">
 	        <div id="content">
 	        	<div style="color: green; font-weight: bold; text-align: center;">
 	        		${msgInformation != null ? msgInformation : ''}
@@ -83,7 +83,7 @@
 						</tr>
 						<tr>
 							<td>
-								<a href="">
+								<a href="@{UsuarioApplication.cadastroUsuario()}">
 									<input type="button" class="button" value="Cadastrar Usuario"/>
 								</a>
 							</td>

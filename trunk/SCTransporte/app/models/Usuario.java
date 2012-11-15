@@ -28,6 +28,17 @@ public class Usuario extends Model {
 	private String endereco;
 	
 	private String telefone;
+	
+
+	public Usuario(String login, String pass, String nome, String cpf,
+			String endereco, String telefone) {
+		this.login = login;
+		this.pass = pass;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.endereco = endereco;
+		this.telefone = telefone;
+	}
 
 	public String getLogin() {
 		return login;
