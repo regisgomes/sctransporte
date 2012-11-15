@@ -29,7 +29,7 @@ public class MarcaApplication extends Controller {
 			cadastroMarca(msgErro);
 		}
 		
-		String msgInformation = "Marca Cadastrada com sucesso!";
+		String msgInformation = "Marca "+ nomeMarca +" Cadastrada com sucesso!";
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	
