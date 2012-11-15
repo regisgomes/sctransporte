@@ -21,45 +21,43 @@
         </div><!-- #titleBar -->
         
         <div id="content">
-            <table width="600" cellpadding="0" cellspacing="5">
-                <tr>
-                  <td valign="top">Veículo Selecionado:</td>
-                    <td>Ford KA 1.6</td>
-                </tr>
-                <tr>
-                    <td valign="top">Marca:</td>
-                    <td>
-                        <select name="modelos">
-							<option value="init" selected="selected"> -- SELECIONE -- </option>
-							#{list items:marcas, as:'marca'}
-							<option value="${marca.nome}">${marca.nome}</option>
-							#{/list}
-						</select>                   
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top">Tipo de Veículo:</td>
-                    <td>
-						<select name="modelos">
-							<option value="init" selected="selected"> -- SELECIONE -- </option>
-							#{list items:tipos, as:'tipo'}
-							<option value="${tipo.nome}">${tipo.nome}</option>
-							#{/list}
-						</select>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top">Placa:</td>
-                    <td><input class="input" type="text" /></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" class="button" value="Cadastrar" />
-                        <input type="reset" class="button" value="Limpar Campos" />
-                    </td>
-                </tr>
-            </table>
+        	<form action="@{VeiculoApplication.cadastrar()}" method="POST">
+	            <table width="600" cellpadding="0" cellspacing="5">
+	                <tr>
+	                    <td valign="top">Marca:</td>
+	                    <td>
+	                        <select name="idMarca">
+								<option value="0" selected="selected"> -- SELECIONE -- </option>
+								#{list items:marcas, as:'marca'}
+									<option value="${marca.id}">${marca.nome}</option>
+								#{/list}
+							</select>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td valign="top">Tipo de Veículo:</td>
+	                    <td>
+							<select name="idTipo">
+								<option value="0" selected="selected"> -- SELECIONE -- </option>
+								#{list items:tipos, as:'tipo'}
+								<option value="${tipo.id}">${tipo.nome}</option>
+								#{/list}
+							</select>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td valign="top">Placa:</td>
+	                    <td><input class="input" type="text" name="placa"/></td>
+	                </tr>
+	                <tr>
+	                    <td></td>
+	                    <td>
+	                        <input type="submit" class="button" value="Cadastrar" />
+	                        <input type="reset" class="button" value="Limpar Campos" />
+	                    </td>
+	                </tr>
+	            </table>
+            </form>
         </div><!-- #content -->
       
         <div id="footer">
