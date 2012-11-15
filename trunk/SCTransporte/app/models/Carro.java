@@ -24,10 +24,6 @@ public class Carro extends GenericModel {
 	@JoinColumn (name = "id_modelo")
 	private Modelo modelo;
 	
-	@ManyToOne
-	@JoinColumn (name = "id_tipo_veiculo")
-	private Tipo tipo;
-	
 	private Integer quilometragem;
 	
 	private String cor;
@@ -50,14 +46,6 @@ public class Carro extends GenericModel {
 
 	public void setModelo(Modelo modelo) {
 		this.modelo = modelo;
-	}
-
-	public Tipo getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
 	}
 
 	public Integer getQuilometragem() {
