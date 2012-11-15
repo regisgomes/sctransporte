@@ -20,73 +20,82 @@
             Principal > <span>Menu</span>
         </div><!-- #titleBar -->
         
-        <div id="content">
-        	<form action="@{Application.menu()}" method="POST">
-        	<div style="color: green; font-weight: bold; text-align: center;">
-        		${msgInformation != null ? msgInformation : ''}
-        	</div>
-        	<font style="text-align: left"> Olá, ${user.nome}!</font><br />
-	            <table width="300" cellpadding="0" cellspacing="5" style="float: left;">
-					<tr>
-						<td>
-							<b>Veículos</b>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="@{MarcaApplication.cadastroMarca()}">
-								<input type="button" class="button" value="Cadastrar Marca"/>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="@{TipoVeiculoApplication.cadastroTipoVeiculo()}">
-								<input type="button" class="button" value="Cadastrar Tipo Veiculo"/>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="@{VeiculoApplication.cadastroVeiculo()}">
-								<input type="button" class="button" value="Cadastrar Veiculo"/>
-							</a>
-						</td>
-					</tr>
-				</table>
-				<table width="300" cellpadding="0" cellspacing="5">
-					<tr>
-						<td>
-							<b>Usuários</b>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="@{CargoApplication.cadastroCargo()}">
-								<input type="button" class="button" value="Cadastrar Cargo"/>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="">
-								<input type="button" class="button" value="Cadastrar Funcionario"/>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="">
-								<input type="button" class="button" value="Cadastrar Usuario"/>
-							</a>
-						</td>
-					</tr>
-				</table>
+       	<form action="@{Application.menu()}" method="POST">
+	        <div id="content">
+	        	<div style="color: green; font-weight: bold; text-align: center;">
+	        		${msgInformation != null ? msgInformation : ''}
+	        	</div>
+	        	<font style="text-align: left"> Olá, ${user.nome}!</font><br />
+		            <table width="300" cellpadding="0" cellspacing="5" style="float: left;">
+						<tr>
+							<td>
+								<b>Veículos</b>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="@{MarcaApplication.cadastroMarca()}">
+									<input type="button" class="button" value="Cadastrar Marca"/>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="@{ModeloApplication.cadastroModelo()}">
+									<input type="button" class="button" value="Cadastrar Modelo"/>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="@{TipoVeiculoApplication.cadastroTipoVeiculo()}">
+									<input type="button" class="button" value="Cadastrar Tipo Veiculo"/>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="@{VeiculoApplication.cadastroVeiculo()}">
+									<input type="button" class="button" value="Cadastrar Veiculo"/>
+								</a>
+							</td>
+						</tr>
+					</table>
+					<table width="300" cellpadding="0" cellspacing="5">
+						<tr>
+							<td>
+								<b>Usuários</b>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="@{CargoApplication.cadastroCargo()}">
+									<input type="button" class="button" value="Cadastrar Cargo"/>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="">
+									<input type="button" class="button" value="Cadastrar Funcionario"/>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="">
+									<input type="button" class="button" value="Cadastrar Usuario"/>
+								</a>
+							</td>
+						</tr>
+					</table>
+			</div>
+			<div id="content">
 				<a href="@{Application.index()}">
 					<input type="button" class="button" value="Sair" />
 				</a>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

@@ -21,4 +21,12 @@ public class VeiculoApplication extends Controller {
 		render(marcas, tipos);
 	}
 	
+	public static void cadastrar(int idMarca, int idTipo, String placa) {
+		Marca marca = Marca.findById(idMarca);
+		Tipo tipo = Tipo.findById(idTipo);
+		
+		Application.menu(Application.getUsuarioLogado(), "");
+		
+	}
+	
 }
