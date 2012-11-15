@@ -3,8 +3,12 @@
  */
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import models.Marca;
 import models.Modelo;
+import models.Tipo;
 import play.mvc.Controller;
 
 /**
@@ -14,31 +18,36 @@ import play.mvc.Controller;
 public class ModeloApplication extends Controller {
 
 	public static void cadastroModelo() {
-		render();
+		List<Marca> marcas =  Marca.all().fetch();
+		render(marcas);
 	}
 	
+	public static void cadastroModelo(List<String> erros) {
+		List<Marca> marcas =  Marca.all().fetch();
+		render(marcas, erros);
+	}
+	
+	
 	public static void cadastrarModelo(Long idMarca, String nome) {
-		boolean hasError = false;
-		StringBuilder erros = new StringBuilder();
+		List<String> erros = new ArrayList<String>();
 		
-		if (idMarca == null || idMarca == 0) {
-			hasError = true;
-			erros.append("Informe a Marca! <br/>");
-		}
+		if (idMarca == null || idMarca == 0)
+			erros.add("Informe a Marca!");
 		
-		if (nome == null || nome.isEmpty()) {
-			hasError = true;
-			erros.append("Informe a Descrição! <br/>");
-		}
+		if (nome == null || nome.isEmpty())
+			erros.add("Informe a Descrição!");
 		
-		if (!hasError) {
+		if (erros.isEmpty()) {
 			Marca marca = Marca.findById(idMarca);
 			Modelo modelo = new Modelo();
 			modelo.setMarca(marca);
 			modelo.setNome(nome);
 			modelo.save();
+			
+			String msgInformation = "Modelo " + modelo.getNome() + " Cadastrado com sucesso!";
+			Application.menu(Application.getUsuarioLogado(), msgInformation);
 		} else {
-			Application.menu(Application.getUsuarioLogado(), erros.toString());
+			cadastroModelo(erros);
 		}
 	}
 	

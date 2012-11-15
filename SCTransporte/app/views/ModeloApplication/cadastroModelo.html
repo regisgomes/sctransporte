@@ -23,7 +23,13 @@
         <div id="content">
         	<form action="@{ModeloApplication.cadastrarModelo()}" method="POST">
 	        	<div style="color: red; font-weight: bold; text-align: center;">
-	        		${msgErro != null ? msgErro : ''}
+	        		#{if erros != null}
+		        		#{list items:erros, as:'erro'}
+							${erro}
+							<br/>
+							<br/>
+						#{/list}
+					#{/if}
 	        	</div>
 	            <table width="600" cellpadding="0" cellspacing="5">
 	                <tr>

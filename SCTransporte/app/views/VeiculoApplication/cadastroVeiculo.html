@@ -22,14 +22,23 @@
         
         <div id="content">
         	<form action="@{VeiculoApplication.cadastrar()}" method="POST">
+        		<div style="color: red; font-weight: bold; text-align: center;">
+	        		#{if erros != null}
+		        		#{list items:erros, as:'erro'}
+							${erro}
+							<br/>
+							<br/>
+						#{/list}
+					#{/if}
+	        	</div>
 	            <table width="600" cellpadding="0" cellspacing="5">
 	                <tr>
-	                    <td valign="top">Marca:</td>
+	                    <td valign="top">Modelo:</td>
 	                    <td>
-	                        <select name="idMarca">
+	                        <select name="idModelo">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
-								#{list items:marcas, as:'marca'}
-									<option value="${marca.id}">${marca.nome}</option>
+								#{list items:modelos, as:'modelo'}
+									<option value="${modelo.id}">${modelo.nome}</option>
 								#{/list}
 							</select>
 	                    </td>
@@ -40,14 +49,26 @@
 							<select name="idTipo">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:tipos, as:'tipo'}
-								<option value="${tipo.id}">${tipo.nome}</option>
+									<option value="${tipo.id}">${tipo.nome}</option>
 								#{/list}
 							</select>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Placa:</td>
-	                    <td><input class="input" type="text" name="placa"/></td>
+	                    <td><input class="input" type="text" name="placa"  maxlength="15"/></td>
+	                </tr>
+	                <tr>
+	                    <td valign="top">Quilometragem:</td>
+	                    <td><input class="input" type="text" name="quilometragem"  maxlength="15"/></td>
+	                </tr>
+	                <tr>
+	                    <td valign="top">Cor:</td>
+	                    <td><input class="input" type="text" name="cor"  maxlength="15"/></td>
+	                </tr>
+	                <tr>
+	                    <td valign="top">Ano:</td>
+	                    <td><input class="input" type="text" name="ano" maxlength="4"/></td>
 	                </tr>
 	                <tr>
 	                    <td></td>

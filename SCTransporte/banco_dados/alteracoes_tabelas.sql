@@ -10,35 +10,27 @@ CREATE TABLE public.marca (
 
 ALTER SEQUENCE public.marca_id_seq_1 OWNED BY public.marca.id;
 
-CREATE SEQUENCE public.modelo_id_seq_1;
+CREATE TABLE public.tipo (
+                id BIGINT NOT NULL,
+                nome VARCHAR NOT NULL,
+                CONSTRAINT tipo_pk PRIMARY KEY (id)
+);
+
 
 CREATE TABLE public.modelo (
-                id BIGINT NOT NULL DEFAULT nextval('public.modelo_id_seq_1'),
+                id BIGINT NOT NULL,
+                id_tipo BIGINT NOT NULL,
                 id_marca BIGINT NOT NULL,
                 nome VARCHAR NOT NULL,
                 CONSTRAINT modelo_pk PRIMARY KEY (id)
 );
 
 
-ALTER SEQUENCE public.modelo_id_seq_1 OWNED BY public.modelo.id;
-
-CREATE SEQUENCE public.tipo_veiculo_id_seq_1;
-
-CREATE TABLE public.tipo_veiculo (
-                id BIGINT NOT NULL DEFAULT nextval('public.tipo_veiculo_id_seq_1'),
-                categoria VARCHAR NOT NULL,
-                CONSTRAINT tipo_veiculo_pk PRIMARY KEY (id)
-);
-
-
-ALTER SEQUENCE public.tipo_veiculo_id_seq_1 OWNED BY public.tipo_veiculo.id;
-
 CREATE SEQUENCE public.carro_id_seq_1;
 
 CREATE TABLE public.carro (
                 id BIGINT NOT NULL DEFAULT nextval('public.carro_id_seq_1'),
-                id_modelo BIGINT NOT NULL,
-                id_tipo_veiculo BIGINT NOT NULL,
+                id_1 BIGINT NOT NULL,
                 quilometragem INTEGER NOT NULL,
                 cor VARCHAR NOT NULL,
                 ano INTEGER NOT NULL,
@@ -146,16 +138,16 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.carro ADD CONSTRAINT modelo_carro_fk
-FOREIGN KEY (id_modelo)
-REFERENCES public.modelo (id)
+ALTER TABLE public.modelo ADD CONSTRAINT tipo_modelo_fk
+FOREIGN KEY (id_tipo)
+REFERENCES public.tipo (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.carro ADD CONSTRAINT tipo_veiculo_carro_fk
-FOREIGN KEY (id_tipo_veiculo)
-REFERENCES public.tipo_veiculo (id)
+ALTER TABLE public.carro ADD CONSTRAINT modelo_carro_fk
+FOREIGN KEY (id_1)
+REFERENCES public.modelo (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
