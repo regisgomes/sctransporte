@@ -30,16 +30,14 @@ public class VeiculoApplication extends Controller {
 		render(modelos, tipos, erros);
 	}
 	
-	public static void cadastrar(Long idModelo, Long idTipo, String placa, Integer quilometragem, String cor, Integer ano) {
-		List<String> erros = validarCamposObg(idModelo, idTipo, placa, quilometragem, cor, ano);
+	public static void cadastrar(Long idModelo, String placa, Integer quilometragem, String cor, Integer ano) {
+		List<String> erros = validarCamposObg(idModelo, placa, quilometragem, cor, ano);
 		
 		if (erros.isEmpty()) {
 			Modelo modelo = Modelo.findById(idModelo);
-			Tipo tipo = Tipo.findById(idTipo);
 			
 			Carro veiculo = new Carro();
 			veiculo.setModelo(modelo);
-			veiculo.setTipo(tipo);
 			veiculo.setPlaca(placa);
 			veiculo.setQuilometragem(quilometragem);
 			veiculo.setCor(cor);
@@ -54,16 +52,12 @@ public class VeiculoApplication extends Controller {
 		
 	}
 
-	private static List<String> validarCamposObg(Long idModelo, Long idTipo,
-			String placa, Integer quilometragem, String cor, Integer ano) {
+	private static List<String> validarCamposObg(Long idModelo, String placa, Integer quilometragem, String cor, Integer ano) {
 		List<String> erros = new ArrayList<String>();
 		
 		if (idModelo == null || idModelo == 0)
 			erros.add("Informe o Modelo!");
 		
-		if (idTipo == null || idTipo == 0)
-			erros.add("Informe o Tipo!");
-
 		if (placa == null || placa.isEmpty())
 			erros.add("Informe a Placa!");
 		

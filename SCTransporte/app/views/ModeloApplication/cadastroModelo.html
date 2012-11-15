@@ -44,6 +44,17 @@
 	                    </td>
 	                </tr>
 	                <tr>
+	                    <td valign="top">Tipo:</td>
+	                    <td>
+							<select name="idTipo">
+								<option value="0" selected="selected"> -- SELECIONE -- </option>
+								#{list items:tipos, as:'tipo'}
+									<option value="${tipo.id}">${tipo.nome}</option>
+								#{/list}
+							</select>
+	                    </td>
+	                </tr>
+	                <tr>
 	                	<td valign="top">Descrição:</td>
 	                    <td>
 	                		<input type="text" name="nome" />

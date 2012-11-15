@@ -44,17 +44,6 @@
 	                    </td>
 	                </tr>
 	                <tr>
-	                    <td valign="top">Tipo de Veículo:</td>
-	                    <td>
-							<select name="idTipo">
-								<option value="0" selected="selected"> -- SELECIONE -- </option>
-								#{list items:tipos, as:'tipo'}
-									<option value="${tipo.id}">${tipo.nome}</option>
-								#{/list}
-							</select>
-	                    </td>
-	                </tr>
-	                <tr>
 	                    <td valign="top">Placa:</td>
 	                    <td><input class="input" type="text" name="placa"  maxlength="15"/></td>
 	                </tr>

@@ -28,6 +28,10 @@ public class Modelo extends GenericModel {
 	@JoinColumn (name = "id_marca")
 	private Marca marca;
 	
+	@ManyToOne
+	@JoinColumn (name = "id_tipo")
+	private Tipo tipo;
+	
 	private String nome;
 	
 	public Long getId() {
@@ -45,6 +49,14 @@ public class Modelo extends GenericModel {
 
 	public void setMarca(Marca marca) {
 		this.marca = marca;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getNome() {

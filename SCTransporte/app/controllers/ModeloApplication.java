@@ -19,28 +19,36 @@ public class ModeloApplication extends Controller {
 
 	public static void cadastroModelo() {
 		List<Marca> marcas =  Marca.all().fetch();
-		render(marcas);
+		List<Tipo> tipos = Tipo.all().fetch();
+		render(marcas, tipos);
 	}
 	
 	public static void cadastroModelo(List<String> erros) {
 		List<Marca> marcas =  Marca.all().fetch();
-		render(marcas, erros);
+		List<Tipo> tipos = Tipo.all().fetch();
+		render(marcas, tipos, erros);
 	}
 	
 	
-	public static void cadastrarModelo(Long idMarca, String nome) {
+	public static void cadastrarModelo(Long idMarca, Long idTipo, String nome) {
 		List<String> erros = new ArrayList<String>();
 		
 		if (idMarca == null || idMarca == 0)
 			erros.add("Informe a Marca!");
+		
+		if (idTipo == null || idTipo == 0)
+			erros.add("Informe o Tipo!");
 		
 		if (nome == null || nome.isEmpty())
 			erros.add("Informe a Descrição!");
 		
 		if (erros.isEmpty()) {
 			Marca marca = Marca.findById(idMarca);
+			Tipo tipo = Tipo.findById(idTipo);
+			
 			Modelo modelo = new Modelo();
 			modelo.setMarca(marca);
+			modelo.setTipo(tipo);
 			modelo.setNome(nome);
 			modelo.save();
 			
