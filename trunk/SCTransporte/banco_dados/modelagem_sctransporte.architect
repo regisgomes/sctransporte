@@ -4,16 +4,7 @@
  <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
  <project-data-sources>
   <data-source id="DS0">
-   <property key="Logical" value="(Banco de dados alvo)" />
-   <property key="Connection Type" value="PostgreSQL" />
-   <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/sctransporte" />
-   <property key="UID" value="postgres" />
-   <property key="PWD" value="postgres" />
-   <property key="ca.sqlpower.architect.etl.kettle.database" value="localhost" />
-   <property key="ca.sqlpower.architect.etl.kettle.port" value="5432" />
-   <property key="ca.sqlpower.architect.etl.kettle.hostname" value="Local Host" />
-   <property key="ca.sqlpower.architect.etl.kettle.repos.login" value="postgres" />
-   <property key="ca.sqlpower.architect.etl.kettle.repos.password" value="postgres" />
+   <property key="Logical" value="Modelo de Dados" />
   </data-source>
  </project-data-sources>
  <source-databases>
