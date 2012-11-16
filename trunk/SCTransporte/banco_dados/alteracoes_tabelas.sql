@@ -212,3 +212,10 @@ ALTER TABLE carro DROP COLUMN id_1;
 
 ALTER TABLE entrega
    ALTER COLUMN id_viagem DROP NOT NULL;
+
+DELETE FROM cargo;
+SELECT setval('public.cargo_id_seq', 4, true);
+
+INSERT INTO cargo(
+            id, nome, salario)
+    VALUES (1, 'MOTORISTA', 1000);
