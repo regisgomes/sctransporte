@@ -46,7 +46,9 @@ public class Entrega extends GenericModel{
 
 	private Double valor;
 
-	
+	@ManyToOne
+	@JoinColumn (name = "id_viagem")
+	private Viagem viagem;
 	
 	public Entrega(String codRastreio, String descricao, Integer volumes,
 			Double valor) {
@@ -142,8 +144,13 @@ public class Entrega extends GenericModel{
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	
-	
-	
+
+	public Viagem getViagem() {
+		return viagem;
+	}
+
+	public void setViagem(Viagem viagem) {
+		this.viagem = viagem;
+	}
 	
 }
