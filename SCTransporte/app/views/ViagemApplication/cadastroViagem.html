@@ -33,7 +33,7 @@
 	        	</div>
 	            <table width="600" cellpadding="0" cellspacing="5">
 	                <tr>
-	                    <td valign="top">Carro:</td>
+	                    <td valign="top">Veículo:</td>
 	                    <td>
 	                        <select name="idCarro">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
@@ -56,11 +56,11 @@
 	                </tr>
 	                <tr>
 	                    <td valign="top">Data de Saída:</td>
-	                    <td><input class="input" type="text" name="dataSaida"  maxlength="8"/></td>
+	                    <td><input class="input" type="text" name="dataSaida"  maxlength="10"/></td>
 	                </tr>
 					<tr>
 	                    <td valign="top">Data de Chegada:</td>
-	                    <td><input class="input" type="text" name="dataChegada"  maxlength="8"/></td>
+	                    <td><input class="input" type="text" name="dataChegada"  maxlength="10"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Quilometragem Inicial:</td>
@@ -68,13 +68,14 @@
 	                </tr>
 	                <tr>
 	                    <td valign="top">Quilometragem Final:</td>
-	                    <td><input class="input" type="text" name="quilometragemInicial"  maxlength="15"/></td>
+	                    <td><input class="input" type="text" name="quilometragemFinal"  maxlength="15"/></td>
 	                </tr>
 	                <tr>
 	                	<td valign="top">Entregas:</td>
 	                	<td>
 	                		#{list items:entregas, as:'entrega'}
 								<input type="checkbox" value="${entrega.id}" name="ents[]"> ${entrega.descricao}
+								<br/>
 							#{/list}
 	                	</td>
 	                </tr>
