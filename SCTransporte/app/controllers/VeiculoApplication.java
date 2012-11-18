@@ -17,6 +17,11 @@ import play.mvc.Controller;
  *
  */
 public class VeiculoApplication extends Controller {
+	
+	public static void listaVeiculo(){
+		List<Carro> veiculos = Carro.all().fetch();
+		render(veiculos);
+	}
 
 	public static void cadastroVeiculo() {
 		List<Marca> modelos = Modelo.all().fetch();

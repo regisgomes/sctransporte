@@ -32,8 +32,6 @@ public class Entrega extends GenericModel{
 	@JoinColumn (name = "id_funcionario")
 	private Funcionario idFuncionario;
 
-	//Atributo de referencia para a viagem
-
 	@Temporal (TemporalType.TIMESTAMP)
 	private Date data;
 

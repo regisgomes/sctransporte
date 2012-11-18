@@ -3,6 +3,8 @@
  */
 package controllers;
 
+import java.util.List;
+
 import models.Marca;
 import play.mvc.Controller;
 
@@ -11,6 +13,11 @@ import play.mvc.Controller;
  *
  */
 public class MarcaApplication extends Controller {
+	
+	public static void listaMarca(){
+		List<Marca> marcas = Marca.all().fetch();
+		render(marcas);
+	}
 
 	public static void cadastroMarca() {
 		render();
