@@ -19,6 +19,8 @@ public class Application extends Controller {
     	Usuario user = Usuario.find("login", login).first();
     	if(user != null && user.getPass().equals(pwd)){
     		usuarioLogado = user;
+    		session.put("user", usuarioLogado);
+    		
     		menu(user, null);
     	}
     	else{
@@ -35,4 +37,8 @@ public class Application extends Controller {
 		return usuarioLogado;
 	}
 
+	public static void cancelar() {
+		menu(getUsuarioLogado(), null);
+	}
+	
 }
