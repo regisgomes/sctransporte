@@ -9,6 +9,11 @@ import models.Usuario;
 
 public class FuncionarioApplication extends Controller{
 	
+	public static void listaFuncionario(){
+		List<Funcionario> func = Funcionario.all().fetch();
+		render(func);
+	}
+	
 	public static void cadastroFuncionario(){
 		List<Cargo> cargos = Cargo.all().fetch();
 		List<Usuario> users = Usuario.all().fetch();
