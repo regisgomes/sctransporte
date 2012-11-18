@@ -35,7 +35,12 @@
 	            	#{list items:marcas, as:'marca'}
 	                <tr>
 	                    <td style="text-align: center;">${marca.nome}</td>
-	                    <td style="text-align: center;">EDITAR</td>
+	                    <td style="text-align: center;">
+	                    	<form action="@{MarcaApplication.alterarMarca()}" method="post">
+	                    		<input type="hidden" name="idMarca" value="${marca.id}" />
+	                    		<input type="submit" value="Editar"/>
+	                    	</form>
+	                    </td>
 	                    <td style="text-align: center;">APAGAR</td>
 	                </tr>
 	                #{/list}
