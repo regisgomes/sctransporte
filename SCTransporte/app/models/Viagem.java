@@ -35,7 +35,7 @@ public class Viagem extends GenericModel {
 	@JoinColumn (name = "id_motorista")
 	private Funcionario motorista;
 	
-	@Temporal (TemporalType.TIMESTAMP)
+	@Temporal (TemporalType.DATE)
 	@Column (name = "data_saida")
 	private Date dataSaida;
 	
@@ -45,7 +45,7 @@ public class Viagem extends GenericModel {
 	@Column (name = "quilometragem_final")
 	private Integer quilometragemFinal;
 	
-	@Temporal (TemporalType.TIMESTAMP)
+	@Temporal (TemporalType.DATE)
 	@Column (name = "data_chegada")
 	private Date dataChegada;
 

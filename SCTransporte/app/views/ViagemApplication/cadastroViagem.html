@@ -17,11 +17,11 @@
         </div><!-- #logomarca-->
         
         <div id="titleBar">
-            Cadastro > <span>Novo Veículo</span>
+            Cadastro > <span>Nova Viagem</span>
         </div><!-- #titleBar -->
         
         <div id="content">
-        	<form action="@{ViagemApplication.cadastrar()}" method="POST">
+        	<form action="@{ViagemApplication.cadastrar()}" method="post" >
         		<div style="color: red; font-weight: bold; text-align: center;">
 	        		#{if erros != null}
 		        		#{list items:erros, as:'erro'}
