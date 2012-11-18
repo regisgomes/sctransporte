@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SC Transportes - Cadastro Usuário</title>
+#{set 'moreStyles'}
+        #{stylesheet 'main.css' /}
+#{/set}
+#{get 'moreStyles' /}
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+        <div id="logomarca">
+        </div><!-- #logomarca-->
+        
+        <div id="titleBar">
+            Cadastro > <span>Clientes</span>
+        </div><!-- #titleBar -->
+        
+        <div id="content">
+        		<div style="color: green; font-weight: bold; text-align: center;">
+	        		${msgInformation != null ? msgInformation : ''}
+	        	</div>
+	        	<div style="text-align: center;">
+	        		<a href="@{ClienteApplication.cadastroCliente()}">
+						<input type="button" class="button" value="Cadastrar Cliente"/>
+					</a>
+					<a href="@{Application.cancelar()}">
+						<input type="button" class="button" value="Cancelar" />
+					</a>
+	        	</div>
+	            <table width="600" cellpadding="0" cellspacing="5" align="center">
+	            	<tr>
+	            		<th>Nome da Empresa</th>
+	            		<th>CNPJ</th>
+	            		<th>Email</th>
+	            		<th>Editar</th>
+	            		<th>Apagar</th>
+	            	</tr>
+	            	#{list items:clientes, as:'cliente'}
+		                <tr>
+		                    <td style="text-align: center;">${cliente.empresa}</td>
+		                    <td style="text-align: center;">${cliente.cnpj}</td>
+		                    <td style="text-align: center;">${cliente.email}</td>
+		                    <td style="text-align: center;"><a href="#">EDITAR</a></td>
+		                    <td style="text-align: center;"><a href="#">APAGAR</a></td>
+		                </tr>
+	                #{/list}
+	            </table>
+        </div><!-- #content -->
+      
+        <div id="footer">
+        	2012 - SC Transporte - Todos os direitos reservados
+        </div><!-- #footer -->
+        
+	</div><!-- #wrapper -->
+
+</body>
+</html>

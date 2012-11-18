@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import models.Cliente;
 import play.mvc.Controller;
 
@@ -11,6 +13,12 @@ public class ClienteApplication extends Controller{
 	
 	public static void cadastroCliente(String msgErro){
 		render(msgErro);
+	}
+	
+	public static void listaCliente() {
+		List<Cliente> clientes = Cliente.all().fetch();
+		render(clientes);
+		
 	}
 	
 	public static void cadastrarCliente(String empresa, String cnpj, String telefone,

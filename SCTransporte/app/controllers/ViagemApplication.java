@@ -33,6 +33,11 @@ public class ViagemApplication extends Controller {
 		render(carros, motoristas, entregas, erros);
 	}
 	
+	public static void listaViagem() {
+		List<Viagem> viagens = Viagem.all().fetch();
+		render(viagens);
+	}
+	
 	public static void cadastrar(Long idCarro, Long idMotorista, String dataSaida, String dataChegada, 
 							Integer quilometragemInicial, Integer quilometragemFinal, Long[] ents) {
 			

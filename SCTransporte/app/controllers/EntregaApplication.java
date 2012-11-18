@@ -10,6 +10,11 @@ import play.mvc.Controller;
 
 public class EntregaApplication extends Controller{
 	
+	public static void listaEntrega(String msgInformation) {
+		List<Entrega> entregas = Entrega.all().fetch();
+		render(entregas, msgInformation);
+	}
+	
 	public static void cadastroEntrega(){
 		List<Cliente> clientes = Cliente.all().fetch();
 		List<Funcionario> funcionarios = Funcionario.all().fetch();
@@ -53,7 +58,7 @@ public class EntregaApplication extends Controller{
 			cadastroEntrega(msgErro);
 		}
 		String msgInformation = "Entrega Cadastrada com sucesso!";
-		Application.menu(Application.getUsuarioLogado(), msgInformation);
+		listaEntrega(msgInformation);
 		
 	}
 }
