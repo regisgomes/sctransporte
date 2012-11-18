@@ -1,10 +1,17 @@
 package controllers;
 
+import java.util.List;
+
 import models.Marca;
 import models.Tipo;
 import play.mvc.Controller;
 
 public class TipoVeiculoApplication extends Controller{
+	
+	public static void listaTipoVeiculo(){
+		List<Tipo> tipos = Tipo.all().fetch();
+		render(tipos);
+	}
 
 	public static void cadastroTipoVeiculo(){
 		render();

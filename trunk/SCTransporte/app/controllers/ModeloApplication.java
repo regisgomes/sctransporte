@@ -16,6 +16,11 @@ import play.mvc.Controller;
  *
  */
 public class ModeloApplication extends Controller {
+	
+	public static void listaModelo(){
+		List<Modelo> modelos = Modelo.all().fetch();
+		render(modelos);
+	}
 
 	public static void cadastroModelo() {
 		List<Marca> marcas =  Marca.all().fetch();

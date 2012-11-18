@@ -6,6 +6,11 @@ import play.mvc.Controller;
 import sun.applet.resources.MsgAppletViewer;
 
 public class CargoApplication extends Controller{
+	
+	public static void listaCargo(){
+		List<Cargo> cargos = Cargo.all().fetch();
+		render(cargos);
+	}
 
 	public static void cadastroCargo(){
 		render();
