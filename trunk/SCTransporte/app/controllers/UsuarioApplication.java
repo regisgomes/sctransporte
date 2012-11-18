@@ -8,6 +8,11 @@ import sun.applet.resources.MsgAppletViewer;
 
 public class UsuarioApplication extends Controller{
 	
+	public static void listaUsuario(){
+		List<Usuario> users = Usuario.all().fetch();
+		render(users);
+	}
+	
 	public static void cadastroUsuario(){
 		render();
 	}
