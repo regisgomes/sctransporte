@@ -21,28 +21,32 @@
         </div><!-- #titleBar -->
         
         <div id="content">
-	        	<div style="color: red; font-weight: bold; text-align: center;">
+	        	<div style="width: 680px; margin-bottom: 20px;">
 	        		<a href="@{MarcaApplication.cadastroMarca()}">
 						<input type="button" class="button" value="Cadastrar Marca"/>
 					</a>
 	        	</div>
-	            <table width="600" cellpadding="0" cellspacing="5" align="center">
+	            <table class="listagem" width="680" cellpadding="0" cellspacing="1" align="center">
 	            	<tr>
-	            		<th>Marca</th>
+	            		<th width="500">Marca</th>
 	            		<th>Editar</th>
 	            		<th>Apagar</th>
 	            	</tr>
 	            	#{list items:marcas, as:'marca'}
-	                <tr>
-	                    <td style="text-align: center;">${marca.nome}</td>
-	                    <td style="text-align: center;">
-	                    	<form action="@{MarcaApplication.alterarMarca()}" method="post">
-	                    		<input type="hidden" name="idMarca" value="${marca.id}" />
-	                    		<input type="submit" value="Editar"/>
-	                    	</form>
-	                    </td>
-	                    <td style="text-align: center;">APAGAR</td>
-	                </tr>
+		                <tr class="${marca_index % 2 ? 'corForte' : ''}">
+		                    <td style="text-align: center;">${marca.nome}</td>
+		                    <td style="text-align: center;">
+		                    	<form action="@{MarcaApplication.alterarMarca()}" method="post">
+		                    		<input type="hidden" name="idMarca" value="${marca.id}" />
+		                    		<input type="image" src="/public/img/edit_b.png" id="image" />	
+		                    	</form>
+		                    </td>
+		                    <td style="text-align: center;">
+		                    	<a href="#">
+		                    		<img src="/public/img/delete_b.png" />
+		                    	</a>
+		                    </td>
+		                </tr>
 	                #{/list}
 	            </table>
         </div><!-- #content -->

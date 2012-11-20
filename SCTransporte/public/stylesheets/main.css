@@ -109,3 +109,36 @@ input.button:hover {
 	font-size: 12px;
 	text-align: center;
 }
+
+
+
+
+
+/**** Modificações 19.11.2012 *****/
+
+table.listagem {
+	color: white;
+}
+
+table.listagem tr td, table.listagem tr th {
+	padding: 5px 0px;
+}
+
+table.listagem tr th {
+	background: #ff6600;
+	font-weight: normal;
+}
+
+table.listagem tr td {
+	background: #e7e2e2;
+	color: black;
+}
+
+table.listagem tr.corForte td {
+	color: white;
+	background: #a8a8a8;
+}
+
+#image {
+	border: none;
+}
