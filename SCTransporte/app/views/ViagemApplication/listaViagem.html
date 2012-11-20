@@ -24,7 +24,7 @@
         		<div style="color: green; font-weight: bold; text-align: center;">
 	        		${msgInformation != null ? msgInformation : ''}
 	        	</div>
-	        	<div style="text-align: center;">
+	        	<div style="width: 680px; margin-bottom: 20px;">
 	        		<a href="@{ViagemApplication.cadastroViagem()}">
 						<input type="button" class="button" value="Cadastrar Viagem"/>
 					</a>
@@ -32,7 +32,7 @@
 						<input type="button" class="button" value="Cancelar" />
 					</a>
 	        	</div>
-	            <table width="600" cellpadding="0" cellspacing="5" align="center">
+	            <table class="listagem" width="680" cellpadding="0" cellspacing="1" align="center">
 	            	<tr>
 	            		<th>Veículo</th>
 	            		<th>Motorista</th>
@@ -40,11 +40,19 @@
 	            		<th>Apagar</th>
 	            	</tr>
 	            	#{list items:viagens, as:'viagem'}
-		                <tr>
+		                <tr class="${viagem_index % 2 ? 'corForte' : ''}">
 		                    <td style="text-align: center;">${viagem.carro.modelo.nome} - ${viagem.carro.ano} - ${viagem.carro.placa}</td>
 		                    <td style="text-align: center;">${viagem.motorista.usuario.nome}</td>
-		                    <td style="text-align: center;"><a href="#">EDITAR</a></td>
-		                    <td style="text-align: center;"><a href="#">APAGAR</a></td>
+		                    <td style="text-align: center;">
+		                    	<a href="#">
+		                    		<img src="/public/img/edit_b.png" />
+		                    	</a>
+		                    </td>
+		                    <td style="text-align: center;">
+		                    	<a href="#">
+		                    		<img src="/public/img/delete_b.png" />
+		                    	</a>
+		                    </td>
 		                </tr>
 	                #{/list}
 	            </table>

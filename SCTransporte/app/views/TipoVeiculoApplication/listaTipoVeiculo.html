@@ -21,22 +21,30 @@
         </div><!-- #titleBar -->
         
         <div id="content">
-	        	<div style="color: red; font-weight: bold; text-align: center;">
+	        	<div style="width: 680px; margin-bottom: 20px;">
 	        		<a href="@{TipoVeiculoApplication.cadastroTipoVeiculo()}">
 						<input type="button" class="button" value="Cadastrar Tipo"/>
 					</a>
 	        	</div>
-	            <table width="600" cellpadding="0" cellspacing="5" align="center">
+	            <table class="listagem" width="680" cellpadding="0" cellspacing="1" align="center">
 	            	<tr>
-	            		<th>Tipo</th>
+	            		<th width="500">Tipo</th>
 	            		<th>Editar</th>
 	            		<th>Apagar</th>
 	            	</tr>
 	            	#{list items:tipos, as:'tipo'}
-	                <tr>
+	                <tr class="${tipo_index % 2 ? 'corForte' : ''}">
 	                    <td style="text-align: center;">${tipo.nome}</td>
-	                    <td style="text-align: center;">EDITAR</td>
-	                    <td style="text-align: center;">APAGAR</td>
+	                    <td style="text-align: center;">
+	                    	<a href="#">
+	                    		<img src="/public/img/edit_b.png" />
+	                    	</a>
+	                    </td>
+	                    <td style="text-align: center;">
+	                    	<a href="#">
+	                    		<img src="/public/img/delete_b.png" />
+	                    	</a>
+	                    </td>
 	                </tr>
 	                #{/list}
 	            </table>

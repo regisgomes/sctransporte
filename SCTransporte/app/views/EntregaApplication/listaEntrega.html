@@ -24,7 +24,7 @@
         		<div style="color: green; font-weight: bold; text-align: center;">
 	        		${msgInformation != null ? msgInformation : ''}
 	        	</div>
-	        	<div style="text-align: center;">
+	        	<div style="width: 680px; margin-bottom: 20px;">
 	        		<a href="@{EntregaApplication.cadastroEntrega()}">
 						<input type="button" class="button" value="Cadastrar Entrega"/>
 					</a>
@@ -32,7 +32,7 @@
 						<input type="button" class="button" value="Cancelar" />
 					</a>
 	        	</div>
-	            <table width="600" cellpadding="0" cellspacing="5" align="center">
+	            <table class="listagem" width="680" cellpadding="0" cellspacing="1" align="center">
 	            	<tr>
 	            		<th>Entrega</th>
 	            		<th>Cliente Origem</th>
@@ -46,7 +46,7 @@
 	            		<th>Apagar</th>
 	            	</tr>
 	            	#{list items:entregas, as:'entrega'}
-		                <tr>
+		                <tr class="${entrega_index % 2 ? 'corForte' : ''}">
 		                    <td style="text-align: center;">${entrega.descricao}</td>
 		                    <td style="text-align: center;">${entrega.idClienteOrigem.empresa} - ${entrega.idClienteOrigem.cnpj}</td>
 		                    <td style="text-align: center;">${entrega.idClienteDestino.empresa} - ${entrega.idClienteDestino.cnpj}</td>
@@ -55,8 +55,16 @@
 		                    <td style="text-align: center;">${entrega.volumes}</td>
 		                    <td style="text-align: center;">${entrega.valor}</td>
 		                    <td style="text-align: center;">${entrega.viagem != null ? 'DEFINIDA' : 'INDEFINIDA'}</td>
-		                    <td style="text-align: center;"><a href="#">EDITAR</a></td>
-		                    <td style="text-align: center;"><a href="#">APAGAR</a></td>
+		                    <td style="text-align: center;">
+		                    	<a href="#">
+		                    		<img src="/public/img/edit_b.png" />
+		                    	</a>
+		                    </td>
+		                    <td style="text-align: center;">
+		                    	<a href="#">
+		                    		<img src="/public/img/delete_b.png" />
+		                    	</a>
+		                    </td>
 		                </tr>
 	                #{/list}
 	            </table>
