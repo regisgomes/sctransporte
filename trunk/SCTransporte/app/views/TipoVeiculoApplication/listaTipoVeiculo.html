@@ -36,9 +36,10 @@
 	                <tr class="${tipo_index % 2 ? 'corForte' : ''}">
 	                    <td style="text-align: center;">${tipo.nome}</td>
 	                    <td style="text-align: center;">
-	                    	<a href="#">
-	                    		<img src="/public/img/edit_b.png" />
-	                    	</a>
+	                    	<form action="@{TipoVeiculoApplication.alterarTipo()}" method="post">
+	                    		<input type="hidden" name="idTipo" value="${tipo.id}" />
+	                    		<input type="image" src="/public/img/edit_b.png" id="image" />
+	                    	</form>
 	                    </td>
 	                    <td style="text-align: center;">
 	                    	<a href="#">

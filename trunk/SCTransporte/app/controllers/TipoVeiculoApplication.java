@@ -17,17 +17,36 @@ public class TipoVeiculoApplication extends Controller{
 		render();
 	}
 	
-	public static void cadastroTipoVeiculo(String msgErro){
-		render(msgErro);
+	public static void alterarTipo(String idTipo){
+		Long id = Long.parseLong(idTipo);
+		Tipo tipo = Tipo.findById(id);
+		cadastroTipoVeiculo(tipo, null);
 	}
 	
-	public static void cadastrarTipo(String nomeTipo){
-		if (nomeTipo != null && !nomeTipo.isEmpty()) {
+	public static void cadastroTipoVeiculo(Tipo tipo, String msgErro){
+		if(tipo == null){
+			tipo = new Tipo();
+		}
+		render(tipo, msgErro);
+	}
+	
+	public static void cadastrarTipo(String nomeTipo, String idTipo){
+		//Condiçao para edicao
+		if(idTipo != null && !idTipo.isEmpty()){
+			Long id = Long.parseLong(idTipo);
+			Tipo tipo = Tipo.findById(id);
+			tipo.setNome(nomeTipo);
+			tipo.save();
+		}
+		//Condicao para cadastro
+		else if (nomeTipo != null && !nomeTipo.isEmpty()) {
 			Tipo tipo = new Tipo(nomeTipo);
 			tipo.save();
-		} else {
+		}
+		//Condiçao de erro
+		else {
 			String msgErro = "Informe o nome para o Tipo!";
-			cadastroTipoVeiculo(msgErro);
+			cadastroTipoVeiculo(null, msgErro);
 		}
 		
 		String msgInformation = "Tipo de veiculo cadastrado com sucesso!";
