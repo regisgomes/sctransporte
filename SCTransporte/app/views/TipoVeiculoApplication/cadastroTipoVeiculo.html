@@ -21,18 +21,19 @@
         </div><!-- #titleBar -->
         
         <div id="content">
-        	<form action="@{TipoVeiculoApplication.cadastrarTipo()}" method="POST">
+        	<form action="@{TipoVeiculoApplication.cadastrarTipo()}" method="post">
 	        	<div style="color: red; font-weight: bold; text-align: center;">
 	        		${msgErro != null ? msgErro : ''}
 	        	</div>
 	            <table width="600" cellpadding="0" cellspacing="5">
 	                <tr>
 	                    <td valign="top">Tipo:</td>
-	                    <td><input class="input" type="text" name="nomeTipo" /></td>
+	                    <td><input class="input" type="text" name="nomeTipo" value="${tipo.nome}" /></td>
 	                </tr>
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" name="idTipo" value="${tipo.id}" />
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>
