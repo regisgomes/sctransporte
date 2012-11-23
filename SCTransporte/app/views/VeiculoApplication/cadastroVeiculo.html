@@ -21,7 +21,7 @@
         </div><!-- #titleBar -->
         
         <div id="content">
-        	<form action="@{VeiculoApplication.cadastrar()}" method="POST">
+        	<form action="@{VeiculoApplication.cadastrar()}" method="post">
         		<div style="color: red; font-weight: bold; text-align: center;">
 	        		#{if erros != null}
 		        		#{list items:erros, as:'erro'}
@@ -38,30 +38,36 @@
 	                        <select name="idModelo">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:modelos, as:'modelo'}
+									#{if carro.modelo = modelo}
+									<option value="${modelo.id}" selected="selected">${modelo.nome}</option>
+									#{/if}
+									#{else}
 									<option value="${modelo.id}">${modelo.nome}</option>
+									#{/else}
 								#{/list}
 							</select>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Placa:</td>
-	                    <td><input class="input" type="text" name="placa"  maxlength="15"/></td>
+	                    <td><input class="input" type="text" name="placa" value="${carro.placa}"  maxlength="15"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Quilometragem:</td>
-	                    <td><input class="input" type="text" name="quilometragem"  maxlength="15"/></td>
+	                    <td><input class="input" type="text" name="quilometragem" value="${carro.quilometragem}"  maxlength="15"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Cor:</td>
-	                    <td><input class="input" type="text" name="cor"  maxlength="15"/></td>
+	                    <td><input class="input" type="text" name="cor" value="${carro.cor}"  maxlength="15"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Ano:</td>
-	                    <td><input class="input" type="text" name="ano" maxlength="4"/></td>
+	                    <td><input class="input" type="text" name="ano" value="${carro.ano}" maxlength="4"/></td>
 	                </tr>
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" name="idCarro" value="${carro.id}" />
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>

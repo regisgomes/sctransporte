@@ -22,37 +22,62 @@ public class VeiculoApplication extends Controller {
 		List<Carro> veiculos = Carro.all().fetch();
 		render(veiculos);
 	}
-
-	public static void cadastroVeiculo() {
-		List<Marca> modelos = Modelo.all().fetch();
-		List<Tipo> tipos = Tipo.all().fetch();
-		render(modelos, tipos);
+	
+	public static void alterarVeiculo(String idVeiculo){
+		Long id = Long.parseLong(idVeiculo);
+		Carro carro = Carro.findById(id);
+		cadastroVeiculo(carro, null);
 	}
 	
-	public static void cadastroVeiculo(List<String> erros) {
+	public static void cadastroVeiculo(Carro carro, List<String> erros) {
 		List<Marca> modelos = Modelo.all().fetch();
 		List<Tipo> tipos = Tipo.all().fetch();
-		render(modelos, tipos, erros);
+		if(carro == null){
+			carro = new Carro();
+		}
+		render(carro, modelos, tipos, erros);
 	}
 	
-	public static void cadastrar(Long idModelo, String placa, Integer quilometragem, String cor, Integer ano) {
+	public static void cadastrar(String idCarro, Long idModelo, String placa, Integer quilometragem, String cor, Integer ano) {
 		List<String> erros = validarCamposObg(idModelo, placa, quilometragem, cor, ano);
 		
 		if (erros.isEmpty()) {
-			Modelo modelo = Modelo.findById(idModelo);
+			//Ediçao
+			if(idCarro != null && !idCarro.isEmpty()){
+				Long id = Long.parseLong(idCarro);
+				
+				Carro veiculo = Carro.findById(id);
+				Modelo modelo = Modelo.findById(idModelo);
+				
+				veiculo.setModelo(modelo);
+				veiculo.setPlaca(placa);
+				veiculo.setQuilometragem(quilometragem);
+				veiculo.setCor(cor);
+				veiculo.setAno(ano);
+				veiculo.save();
+				
+				String msgInformation = "Veículo Editado com sucesso!";
+				Application.menu(Application.getUsuarioLogado(), msgInformation);
+			}
+			//Cadastro
+			else{
+				Modelo modelo = Modelo.findById(idModelo);
+				
+				Carro veiculo = new Carro();
+				veiculo.setModelo(modelo);
+				veiculo.setPlaca(placa);
+				veiculo.setQuilometragem(quilometragem);
+				veiculo.setCor(cor);
+				veiculo.setAno(ano);
+				veiculo.save();
+				
+				String msgInformation = "Veículo Cadastrado com sucesso!";
+				Application.menu(Application.getUsuarioLogado(), msgInformation);
+			}
 			
-			Carro veiculo = new Carro();
-			veiculo.setModelo(modelo);
-			veiculo.setPlaca(placa);
-			veiculo.setQuilometragem(quilometragem);
-			veiculo.setCor(cor);
-			veiculo.setAno(ano);
-			veiculo.save();
-			
-			String msgInformation = "Veículo Cadastrado com sucesso!";
-			Application.menu(Application.getUsuarioLogado(), msgInformation);
-		} else {
-			cadastroVeiculo(erros);
+		} 
+		else {
+			cadastroVeiculo(null, erros);
 		}
 		
 	}

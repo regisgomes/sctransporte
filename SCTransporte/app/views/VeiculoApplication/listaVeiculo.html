@@ -38,9 +38,10 @@
 	                    <td style="text-align: center;">${veiculo.placa}</td>
 	                    <td style="text-align: center;">${veiculo.modelo.nome}</td>
 	                    <td style="text-align: center;">
-	                    	<a href="#">
-	                    		<img src="/public/img/edit_b.png" />
-	                    	</a>
+	                    	<form action="@{VeiculoApplication.alterarVeiculo()}" method="post">
+	                    		<input type="hidden" name="idVeiculo" value="${veiculo.id}">
+	                    		<input type="image" src="/public/img/edit_b.png" id="image" />
+	                    	</form>
 	                    </td>
 	                    <td style="text-align: center;">
 	                    	<a href="#">
