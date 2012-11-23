@@ -21,7 +21,7 @@
         </div><!-- #titleBar -->
         
         <div id="content">
-        	<form action="@{ModeloApplication.cadastrarModelo()}" method="POST">
+        	<form action="@{ModeloApplication.cadastrarModelo()}" method="post">
 	        	<div style="color: red; font-weight: bold; text-align: center;">
 	        		#{if erros != null}
 		        		#{list items:erros, as:'erro'}
@@ -38,7 +38,12 @@
 	                        <select name="idMarca">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:marcas, as:'marca'}
+									#{if modelo.marca == marca}
+									<option value="${marca.id}" selected="selected">${marca.nome}</option>
+									#{/if}
+									#{else}
 									<option value="${marca.id}">${marca.nome}</option>
+									#{/else}
 								#{/list}
 							</select>
 	                    </td>
@@ -49,7 +54,12 @@
 							<select name="idTipo">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:tipos, as:'tipo'}
+									#{if modelo.tipo == tipo}
+									<option value="${tipo.id}" selected="selected">${tipo.nome}</option>
+									#{/if}
+									#{else}
 									<option value="${tipo.id}">${tipo.nome}</option>
+									#{/else}
 								#{/list}
 							</select>
 	                    </td>
@@ -57,12 +67,13 @@
 	                <tr>
 	                	<td valign="top">Descrição:</td>
 	                    <td>
-	                		<input type="text" name="nome" />
+	                		<input type="text" name="nome" value="${modelo.nome}" />
 	                	</td>
 	                </tr>
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" name="idModelo" value="${modelo.id}"/>
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>
