@@ -38,9 +38,10 @@
 		                    <td width="300" style="text-align: center;">${cargo.nome}</td>
 		                    <td style="text-align: center;">${cargo.salario}</td>
 		                    <td style="text-align: center;">
-		                    	<a href="#">
-		                    		<img src="/public/img/edit_b.png" />
-		                    	</a>
+		                    	<form action="@{CargoApplication.alterarCargo()}" method="post">
+		                    		<input type="hidden" name="idCargo" value="${cargo.id}" />
+		                    		<input type="image" src="/public/img/edit_b.png" id="image" />
+		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
 		                    	<a href="#">

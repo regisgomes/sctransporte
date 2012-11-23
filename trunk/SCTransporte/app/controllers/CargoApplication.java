@@ -12,21 +12,36 @@ public class CargoApplication extends Controller{
 		render(cargos);
 	}
 
-	public static void cadastroCargo(){
-		render();
+	public static void alterarCargo(String idCargo){
+		Long id = Long.parseLong(idCargo);
+		Cargo cargo = Cargo.findById(id);
+		cadastroCargo(cargo, null);
 	}
 	
-	public static void cadastroCargo(String msgErro){
-		render(msgErro);
+	public static void cadastroCargo(Cargo cargo, String msgErro){
+		if(cargo == null){
+			cargo = new Cargo();
+		}
+		render(cargo, msgErro);
 	}
 	
-	public static void cadastrarCargo(String nomeCargo, Double salario){
-		if (nomeCargo != null && !nomeCargo.isEmpty() && salario != null) {
+	public static void cadastrarCargo(String idCargo, String nomeCargo, Double salario){
+		//Editar
+		if(idCargo != null && !idCargo.isEmpty()){
+			Long id = Long.parseLong(idCargo);
+			Cargo cargo = Cargo.findById(id);
+			
+			cargo.setNome(nomeCargo);
+			cargo.setSalario(salario);
+			cargo.save();
+		}
+		//Inserir
+		else if (nomeCargo != null && !nomeCargo.isEmpty() && salario != null) {
 			Cargo cargo = new Cargo(nomeCargo, salario);
 			cargo.save();
 		} else {
 			String msgErro = "Informe o nome e o salario para o Cargo!";
-			cadastroCargo(msgErro);
+			cadastroCargo(null, msgErro);
 		}
 		
 		String msgInformation = "Cargo cadastrado com sucesso!";

@@ -28,15 +28,16 @@
 	            <table width="600" cellpadding="0" cellspacing="5">
 	                <tr>
 	                    <td valign="top">Cargo:</td>
-	                    <td><input class="input" type="text" name="nomeCargo" /></td>
+	                    <td><input class="input" type="text" name="nomeCargo" value="${cargo.nome}"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Salário:</td>
-	                    <td><input class="input" type="text" name="salario" /></td>
+	                    <td><input class="input" type="text" name="salario" value="${cargo.salario}"/></td>
 	                </tr>
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" name="idCargo" value="${cargo.id}"/>
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{Application.cancelar()}">
 	                        	<input type="button" class="button" value="Cancelar" />
