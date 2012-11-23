@@ -1,16 +1,32 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import play.db.jpa.GenericModel;
 import play.db.jpa.Model;
 
 @Entity
-public class Cargo extends Model{
+public class Cargo extends GenericModel{
 	
 	public static final Cargo MOTORISTA = new Cargo(new Long(1));
 
 	private String nome;
 	private Double salario;
+	
+	@Id
+    @GeneratedValue
+    public Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public Object _key() {
+        return getId();
+    }
 	
 	public Cargo(Long id) {
 		this.id = id;
@@ -20,6 +36,10 @@ public class Cargo extends Model{
 		super();
 		this.nome = nome;
 		this.salario = salario;
+	}
+	
+	public Cargo(){
+		
 	}
 	
 	public String getNome() {
