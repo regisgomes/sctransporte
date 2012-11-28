@@ -32,7 +32,12 @@
 	                    <select name="idCargo">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:cargos, as:'cargo'}
+									#{if funcionario.cargo == cargo}
+									<option value="${cargo.id}" selected="selected">${cargo.nome}</option>
+									#{/if}
+									#{else}
 									<option value="${cargo.id}">${cargo.nome}</option>
+									#{/else}
 								#{/list}
 						</select>
 						</td>
@@ -43,7 +48,12 @@
 	                    <select name="idUsuario">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:users, as:'usuario'}
+									#{if funcionario.usuario == usuario}
+									<option value="${usuario.id}" selected="selected">${usuario.nome}</option>
+									#{/if}
+									#{else}
 									<option value="${usuario.id}">${usuario.nome}</option>
+									#{/else}
 								#{/list}
 						</select>
 						</td>
@@ -51,6 +61,7 @@
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" name="idFuncionario" value="${funcionario.id}" />
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>

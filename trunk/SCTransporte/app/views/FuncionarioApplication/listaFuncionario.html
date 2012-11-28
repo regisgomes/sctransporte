@@ -38,9 +38,10 @@
 	                    <td style="text-align: center;">${funcionario.usuario.nome}</td>
 	                    <td style="text-align: center;">${funcionario.cargo.nome}</td>
 	                    <td style="text-align: center;">
-	                    	<a href="#">
-	                    		<img src="/public/img/edit_b.png" />
-	                    	</a>
+	                    	<form action="@{FuncionarioApplication.alterarFuncionario()}" method="post">
+	                    		<input type="hidden" name="idFuncionario" value="${funcionario.id}" />
+	                    		<input type="image" src="/public/img/edit_b.png" id="image" />
+	                    	</form>
 	                    </td>
 	                    <td style="text-align: center;">
 	                    	<a href="#">
