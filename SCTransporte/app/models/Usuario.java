@@ -6,8 +6,10 @@ package models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import play.db.jpa.GenericModel;
 import play.db.jpa.Model;
 
 /**
@@ -15,7 +17,11 @@ import play.db.jpa.Model;
  *
  */
 @Entity
-public class Usuario extends Model {
+public class Usuario extends GenericModel {
+	
+	@Id
+	@GeneratedValue
+	private Long id;
 	
 	private String login;
 	
@@ -29,6 +35,13 @@ public class Usuario extends Model {
 	
 	private String telefone;
 	
+	public Long getId() {
+		 return id;
+	 }
+
+	 public void setId(Long id) {
+		 this.id = id;
+	 }
 
 	public Usuario(String login, String pass, String nome, String cpf,
 			String endereco, String telefone) {
@@ -38,6 +51,10 @@ public class Usuario extends Model {
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.telefone = telefone;
+	}
+	
+	public Usuario(){
+		
 	}
 
 	public String getLogin() {

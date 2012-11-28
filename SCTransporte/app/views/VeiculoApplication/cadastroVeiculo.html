@@ -38,7 +38,7 @@
 	                        <select name="idModelo">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:modelos, as:'modelo'}
-									#{if carro.modelo = modelo}
+									#{if carro.modelo == modelo}
 									<option value="${modelo.id}" selected="selected">${modelo.nome}</option>
 									#{/if}
 									#{else}

@@ -14,31 +14,58 @@ public class FuncionarioApplication extends Controller{
 		render(func);
 	}
 	
-	public static void cadastroFuncionario(){
-		List<Cargo> cargos = Cargo.all().fetch();
-		List<Usuario> users = Usuario.all().fetch();
-		render(cargos, users);
+	public static void alterarFuncionario(String idFuncionario){
+		Long id = Long.parseLong(idFuncionario);
+		Funcionario funcionario = Funcionario.findById(id);
+		cadastroFuncionario(funcionario, null);
 	}
 	
-	public static void cadastroFuncionario(String msgErro){
+	public static void cadastroFuncionario(Funcionario funcionario, String msgErro){
 		List<Cargo> cargos = Cargo.all().fetch();
 		List<Usuario> users = Usuario.all().fetch();
-		render(cargos, users, msgErro);
+		if(funcionario == null){
+			funcionario = new Funcionario();
+		}
+		render(cargos, users, funcionario, msgErro);
 	}
 	
-	public static void cadastrarFuncionario(long idUsuario, long idCargo){
-		Cargo cargo = Cargo.findById(idCargo);
-		Usuario user = Usuario.findById(idUsuario);
+	public static void cadastrarFuncionario(String idFuncionario, String idUsuario, String idCargo){
+		String msgInformation;
+		Usuario user = new Usuario();
+		Cargo cargo = new Cargo();
 		
-		Funcionario funcionario = new Funcionario();
-		funcionario.setCargo(cargo);
-		funcionario.setUsuario(user);
+		//Editar
+		if(!idFuncionario.isEmpty() && idFuncionario != null){	
+			//Testar usuario
+			if(!idUsuario.isEmpty() && idUsuario != null){
+				Long idUser = Long.parseLong(idUsuario);
+				user = Usuario.findById(idUser);
+			}
+			//Testar cargo
+			if(!idCargo.isEmpty() && idCargo != null){
+				Long idCarg = Long.parseLong(idCargo);
+				cargo = Cargo.findById(idCarg);
+			}
+			Long id = Long.parseLong(idFuncionario);
+			Funcionario funcionario = Funcionario.findById(id);
+			funcionario.setCargo(cargo);
+			funcionario.setUsuario(user);
+			funcionario.save();
+			msgInformation = "Usuario editado com sucesso!";
+		}
 		
-		funcionario.save();
-		String msgInformation = "Usuario cadastrado com sucesso!";
+		//Inserir
+		else{
+			cargo = Cargo.findById(idCargo);
+			user = Usuario.findById(idUsuario);
+			
+			Funcionario funcionario = new Funcionario();
+			funcionario.setCargo(cargo);
+			funcionario.setUsuario(user);
+			
+			funcionario.save();
+			msgInformation = "Usuario cadastrado com sucesso!";
+		}
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
-	
-	
-
 }
