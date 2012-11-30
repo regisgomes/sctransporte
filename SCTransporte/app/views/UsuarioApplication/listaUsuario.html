@@ -38,9 +38,10 @@
 	                    <td style="text-align: center;">${usuario.login}</td>
 	                    <td style="text-align: center;">${usuario.nome}</td>
 	                    <td style="text-align: center;">
-	                    	<a href="#">
-	                    		<img src="/public/img/edit_b.png" />
-	                    	</a>
+	                    	<form action="@{UsuarioApplication.alterarUsuario()}" method="post">
+	                    		<input type="hidden" name="idUsuario" value="${usuario.id}">
+	                    		<input type="image" src="/public/img/edit_b.png" id="image"/>
+	                    	</form>
 	                    </td>
 	                    <td style="text-align: center;">
 	                    	<a href="#">
