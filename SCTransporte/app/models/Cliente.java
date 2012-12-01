@@ -1,17 +1,28 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import play.db.jpa.GenericModel;
 import play.db.jpa.Model;
 
 @Entity
-public class Cliente extends Model{
+public class Cliente extends GenericModel{
+	
+	@Id
+	@GeneratedValue
+	private Long id;
 
 	private String empresa;
 	private String cnpj;
 	private String telefone;
 	private String endereco;
 	private String email;
+	
+	public Cliente(){
+		
+	}
 	
 	public Cliente(String empresa, String cnpj, String telefone,
 			String endereco, String email) {
@@ -21,6 +32,14 @@ public class Cliente extends Model{
 		this.endereco = endereco;
 		this.email = email;
 	}
+	
+	public Long getId() {
+		 return id;
+	 }
+
+	 public void setId(Long id) {
+		 this.id = id;
+	 }
 	
 	public String getEmpresa() {
 		return empresa;

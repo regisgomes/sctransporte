@@ -46,9 +46,10 @@
 		                    <td style="text-align: center;">${cliente.cnpj}</td>
 		                    <td style="text-align: center;">${cliente.email}</td>
 		                    <td style="text-align: center;">
-		                    	<a href="#">
-		                    		<img src="/public/img/edit_b.png" />
-		                    	</a>
+		                    	<form action="@{ClienteApplication.alterarCliente}">
+		                    		<input type="hidden" name="idCliente" value="${cliente.id}"/>
+		                    		<input type="image" src="/public/img/edit_b.png" name="image" />
+		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
 		                    	<a href="#">

@@ -28,27 +28,28 @@
 	            <table width="600" cellpadding="0" cellspacing="5">
 	                <tr>
 	                    <td valign="top">Nome da Empresa:</td>
-	                    <td><input class="input" type="text" name="empresa" /></td>
+	                    <td><input class="input" type="text" name="empresa" value="${cliente.empresa}"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">CNPJ:</td>
-	                    <td><input class="input" type="text" name="cnpj" /></td>
+	                    <td><input class="input" type="text" name="cnpj" value="${cliente.cnpj}" /></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Endereço:</td>
-	                    <td><input class="input" type="text" name="endereco" /></td>
+	                    <td><input class="input" type="text" name="endereco" value="${cliente.empresa}" /></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Telefone:</td>
-	                    <td><input class="input" type="text" name="telefone" /></td>
+	                    <td><input class="input" type="text" name="telefone" value="${cliente.telefone}" /></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Email:</td>
-	                    <td><input class="input" type="text" name="email" /></td>
+	                    <td><input class="input" type="text" name="email" value="${cliente.email}" /></td>
 	                </tr>
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" name="idCliente" value="${cliente.id}"/>
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>
