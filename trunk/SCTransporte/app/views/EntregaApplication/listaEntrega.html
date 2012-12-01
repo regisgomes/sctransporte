@@ -56,9 +56,10 @@
 		                    <td style="text-align: center;">${entrega.valor}</td>
 		                    <td style="text-align: center;">${entrega.viagem != null ? 'DEFINIDA' : 'INDEFINIDA'}</td>
 		                    <td style="text-align: center;">
-		                    	<a href="#">
-		                    		<img src="/public/img/edit_b.png" />
-		                    	</a>
+		                    	<form action="@{EntregaApplication.alterarEntrega()}" method="post">
+		                    		<input type="hidden" name="idEntrega" value="${entrega.id}" />
+		                    		<input type="image" src="/public/img/edit_b.png" name="image" />
+		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
 		                    	<a href="#">

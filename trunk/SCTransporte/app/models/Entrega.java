@@ -70,6 +70,10 @@ public class Entrega extends GenericModel{
 		this.volumes = volumes;
 		this.valor = valor;
 	}
+	
+	public Entrega(){
+		
+	}
 
 	public Long getId() {
 		return id;

@@ -32,7 +32,12 @@
 		                    <select name="idClienteOrigem">
 									<option value="0" selected="selected"> -- SELECIONE -- </option>
 									#{list items:clientes, as:'cliente'}
+										#{if entrega.idClienteOrigem == cliente}
+										<option value="${cliente.id}" selected="selected">${cliente.empresa}</option>
+										#{/if}
+										#{else}
 										<option value="${cliente.id}">${cliente.empresa}</option>
+										#{/else}
 									#{/list}
 							</select>
 	                    </td>
@@ -43,7 +48,12 @@
 	                    	<select name="idClienteDestino">
 									<option value="0" selected="selected"> -- SELECIONE -- </option>
 									#{list items:clientes, as:'cliente'}
+										#{if entrega.idClienteDestino == cliente}
+										<option value="${cliente.id}" selected="selected">${cliente.empresa}</option>
+										#{/if}
+										#{else}
 										<option value="${cliente.id}">${cliente.empresa}</option>
+										#{/else}
 									#{/list}
 							</select>
 	                    </td>
@@ -54,30 +64,36 @@
 	                    	<select name="idFuncionario">
 									<option value="0" selected="selected"> -- SELECIONE -- </option>
 									#{list items:funcionarios, as:'funcionario'}
+										#{if entrega.idFuncionario == funcionario}
+										<option value="${funcionario.id}" selected="selected">${funcionario.usuario.nome}</option>
+										#{/if}
+										#{else}
 										<option value="${funcionario.id}">${funcionario.usuario.nome}</option>
+										#{/else}
 									#{/list}
 							</select>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Codigo para rastreio:</td>
-	                    <td><input class="input" type="text" name="codRastreio" /></td>
+	                    <td><input class="input" type="text" name="codRastreio" value="${entrega.codRastreio}"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Descricao:</td>
-	                    <td><input class="input" type="text" name="descricao" /></td>
+	                    <td><input class="input" type="text" name="descricao" value="${entrega.descricao}"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Volumes:</td>
-	                    <td><input class="input" type="text" name="volumes" /></td>
+	                    <td><input class="input" type="text" name="volumes" value="${entrega.volumes}"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Valor:</td>
-	                    <td><input class="input" type="text" name="valor" /></td>
+	                    <td><input class="input" type="text" name="valor" value="${entrega.valor}" /></td>
 	                </tr>
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" value="${entrega.id}" name="idEntrega" />
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{EntregaApplication.listaEntrega()}"><input type="button" class="button" value="Voltar" /></a>
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
