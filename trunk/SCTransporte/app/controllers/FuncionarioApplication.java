@@ -56,8 +56,10 @@ public class FuncionarioApplication extends Controller{
 		
 		//Inserir
 		else{
-			cargo = Cargo.findById(idCargo);
-			user = Usuario.findById(idUsuario);
+			Long idC = Long.parseLong(idCargo);
+			cargo = Cargo.findById(idC);
+			Long idU = Long.parseLong(idUsuario);
+			user = Usuario.findById(idU);
 			
 			Funcionario funcionario = new Funcionario();
 			funcionario.setCargo(cargo);

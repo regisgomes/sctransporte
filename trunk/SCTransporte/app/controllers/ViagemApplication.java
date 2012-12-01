@@ -23,14 +23,21 @@ import play.mvc.Controller;
  */
 public class ViagemApplication extends Controller {
 	
-	public static void cadastroViagem(List<String> erros) {
+	public static void cadastroViagem(Viagem viagem, List<String> erros) {
 		List<Carro> carros = Carro.all().fetch();
 		List<Funcionario> motoristas = Funcionario.find("cargo", Cargo.MOTORISTA).fetch();
+		List<Entrega> entregas = null;
 		
-		Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null");
-		List<Entrega> entregas = q.getResultList();
+		if(viagem == null){
+			viagem = new Viagem();
+			Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null");
+			entregas = q.getResultList();
+		}else{
+			Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null OR viagem ="+viagem.getId());
+			entregas = q.getResultList();
+		}
 		
-		render(carros, motoristas, entregas, erros);
+		render(viagem, carros, motoristas, entregas, erros);
 	}
 	
 	public static void listaViagem() {
@@ -38,45 +45,90 @@ public class ViagemApplication extends Controller {
 		render(viagens);
 	}
 	
-	public static void cadastrar(Long idCarro, Long idMotorista, String dataSaida, String dataChegada, 
+	public static void alterarViagem(String idViagem){
+		Long id = Long.parseLong(idViagem);
+		Viagem viagem = Viagem.findById(id);
+		cadastroViagem(viagem, null);
+	}
+	
+	public static void cadastrar(String idViagem, Long idCarro, Long idMotorista, String dataSaida, String dataChegada, 
 							Integer quilometragemInicial, Integer quilometragemFinal, Long[] ents) {
 			
 		List<String> erros = validarCamposObg(idCarro, idMotorista, dataSaida, dataChegada,
 				quilometragemInicial, quilometragemFinal, ents);
+		Viagem viagem = new Viagem();
 		
 		if (erros.isEmpty()) {
 			
-			Carro veiculo = Carro.findById(idCarro);
-			Funcionario motorista = Funcionario.findById(idMotorista);
-			
-			Viagem viagem = new Viagem();
-			viagem.setCarro(veiculo);
-			viagem.setMotorista(motorista);
-			try {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-				viagem.setDataChegada(dateFormat.parse(dataChegada));
-				viagem.setDataSaida(dateFormat.parse(dataSaida));
-			} catch (ParseException e) {
-				erros.add("A data deve estar no formato DD/MM/AAAA!");
-				ViagemApplication.cadastroViagem(erros);
-				return;
+			//Editar
+			if(idViagem != null && !idViagem.isEmpty()){
+				Long id = Long.parseLong(idViagem);
+				viagem = Viagem.findById(id);
+				
+				Carro veiculo = Carro.findById(idCarro);
+				Funcionario motorista = Funcionario.findById(idMotorista);
+				viagem.setCarro(veiculo);
+				viagem.setMotorista(motorista);
+				try {
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					viagem.setDataChegada(dateFormat.parse(dataChegada));
+					viagem.setDataSaida(dateFormat.parse(dataSaida));
+				} catch (ParseException e) {
+					erros.add("A data deve estar no formato DD/MM/AAAA!");
+					ViagemApplication.cadastroViagem(null, erros);
+					return;
+				}
+				
+				viagem.setQuilometragemInicial(quilometragemInicial);
+				viagem.setQuilometragemFinal(quilometragemFinal);
+				
+				List<Entrega> old = viagem.getEntregas();
+				
+				for (Long idEnt : ents) {
+					Entrega entrega = new Entrega();
+					entrega.setId(idEnt);
+					if (!old.contains(entrega)) {
+						viagem.getEntregas().add(entrega);
+					}
+				}
+				viagem.save();
 			}
 			
-			viagem.setQuilometragemInicial(quilometragemInicial);
-			viagem.setQuilometragemFinal(quilometragemFinal);
-			
-			viagem.save();
-			
-			for (Long idEntrega : ents) {
-				Entrega entrega = Entrega.findById(idEntrega);
-				entrega.setViagem(viagem);
-				entrega.save();
+			//Inserir
+			else{
+				Carro veiculo = Carro.findById(idCarro);
+				Funcionario motorista = Funcionario.findById(idMotorista);
+				
+				viagem = new Viagem();
+				viagem.setCarro(veiculo);
+				viagem.setMotorista(motorista);
+				try {
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+					viagem.setDataChegada(dateFormat.parse(dataChegada));
+					viagem.setDataSaida(dateFormat.parse(dataSaida));
+				} catch (ParseException e) {
+					erros.add("A data deve estar no formato DD/MM/AAAA!");
+					ViagemApplication.cadastroViagem(null, erros);
+					return;
+				}
+				
+				viagem.setQuilometragemInicial(quilometragemInicial);
+				viagem.setQuilometragemFinal(quilometragemFinal);
+				
+				viagem.save();
+				
+				for (Long idEntrega : ents) {
+					Entrega entrega = Entrega.findById(idEntrega);
+					entrega.setViagem(viagem);
+					entrega.save();
+				}
 			}
+			
 			
 			String msgInformation = "Viagem Cadastrada com sucesso!";
 			Application.menu(Application.getUsuarioLogado(), msgInformation);
 		} else {
-			ViagemApplication.cadastroViagem(erros);
+			ViagemApplication.cadastroViagem(null, erros);
 		}
 		
 	}
