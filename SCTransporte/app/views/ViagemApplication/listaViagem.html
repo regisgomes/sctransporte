@@ -44,9 +44,10 @@
 		                    <td style="text-align: center;">${viagem.carro.modelo.nome} - ${viagem.carro.ano} - ${viagem.carro.placa}</td>
 		                    <td style="text-align: center;">${viagem.motorista.usuario.nome}</td>
 		                    <td style="text-align: center;">
-		                    	<a href="#">
-		                    		<img src="/public/img/edit_b.png" />
-		                    	</a>
+		                    	<form action="@{ViagemApplication.alterarViagem()}">
+		                    		<input type="hidden" name="idViagem" value="${viagem.id}"/>
+		                    		<input type="image" src="/public/img/edit_b.png" name="image"/>
+		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
 		                    	<a href="#">

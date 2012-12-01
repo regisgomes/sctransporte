@@ -38,7 +38,12 @@
 	                        <select name="idCarro">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:carros, as:'carro'}
+									#{if viagem.carro == carro}
+									<option value="${carro.id}" selected="selected">${carro.modelo.nome} - ${carro.ano} - ${carro.placa}</option>
+									#{/if}
+									#{else}
 									<option value="${carro.id}">${carro.modelo.nome} - ${carro.ano} - ${carro.placa}</option>
+									#{/else}
 								#{/list}
 							</select>
 	                    </td>
@@ -49,32 +54,42 @@
 	                        <select name="idMotorista">
 								<option value="0" selected="selected"> -- SELECIONE -- </option>
 								#{list items:motoristas, as:'motorista'}
-									<option value="${motorista.id}">${motorista.usuario.nome}</option>
+									#{if viagem.motorista == motorista}
+									<option value="${motorista.id}" selected="selected">${motorista.usuario.nome}</option>
+									#{/if}
+									#{else}
+									<option value="${motorista.id}" >${motorista.usuario.nome}</option>
+									#{/else}
 								#{/list}
 							</select>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Data de Saída:</td>
-	                    <td><input class="input" type="text" name="dataSaida"  maxlength="10"/></td>
+	                    <td><input class="input" type="text" name="dataSaida"  maxlength="10" value="${viagem.dataSaida}"/></td>
 	                </tr>
 					<tr>
 	                    <td valign="top">Data de Chegada:</td>
-	                    <td><input class="input" type="text" name="dataChegada"  maxlength="10"/></td>
+	                    <td><input class="input" type="text" name="dataChegada"  maxlength="10" value="${viagem.dataChegada}"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Quilometragem Inicial:</td>
-	                    <td><input class="input" type="text" name="quilometragemInicial"  maxlength="15"/></td>
+	                    <td><input class="input" type="text" name="quilometragemInicial"  maxlength="15" value="${viagem.quilometragemInicial}"/></td>
 	                </tr>
 	                <tr>
 	                    <td valign="top">Quilometragem Final:</td>
-	                    <td><input class="input" type="text" name="quilometragemFinal"  maxlength="15"/></td>
+	                    <td><input class="input" type="text" name="quilometragemFinal"  maxlength="15" value="${viagem.quilometragemFinal}"/></td>
 	                </tr>
 	                <tr>
 	                	<td valign="top">Entregas:</td>
 	                	<td>
 	                		#{list items:entregas, as:'entrega'}
+	                			#{if entrega.viagem == viagem.id && entrega.viagem != null}
+	                			<input type="checkbox" value="${entrega.id}" name="ents[]" checked="checked"> ${entrega.descricao}
+	                			#{/if}
+	                			#{else}
 								<input type="checkbox" value="${entrega.id}" name="ents[]"> ${entrega.descricao}
+								#{/else}
 								<br/>
 							#{/list}
 	                	</td>
@@ -82,6 +97,7 @@
 	                <tr>
 	                    <td></td>
 	                    <td>
+	                    	<input type="hidden" name="idViagem" value="${viagem.id}" />
 	                        <input type="submit" class="button" value="Cadastrar" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>
