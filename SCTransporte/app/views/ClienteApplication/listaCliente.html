@@ -28,6 +28,9 @@
 	        		<a href="@{ClienteApplication.cadastroCliente()}">
 						<input type="button" class="button" value="Cadastrar Cliente"/>
 					</a>
+					<a href="@{ClienteApplication.relatorioCliente()}">
+						<input type="button" class="button" value="Relatório" />
+					</a>
 					<a href="@{Application.cancelar()}">
 						<input type="button" class="button" value="Cancelar" />
 					</a>
@@ -52,7 +55,7 @@
 		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
-		                    	<form action="@{ClienteApplicaiton.excluirCliente()}" method="post">
+		                    	<form action="@{ClienteApplication.excluirCliente()}" method="post">
 		                    		<input type="hidden" name="idCliente" value="${cliente.id}" />
 		                    		<input type="image" name="image" src="/public/img/delete_b.png" />
 		                    	</form>
