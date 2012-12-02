@@ -2,8 +2,11 @@ package controllers;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import models.Cargo;
 import models.Cliente;
+import models.Entrega;
 import play.mvc.Controller;
 
 public class ClienteApplication extends Controller{
@@ -31,7 +34,46 @@ public class ClienteApplication extends Controller{
 	public static void listaCliente() {
 		List<Cliente> clientes = Cliente.all().fetch();
 		render(clientes);
-		
+	}
+	
+	public static void relatorioCliente(String idCliente, String Tipo, String Status){
+		List<Cliente> clientes = Cliente.all().fetch();
+
+		if(idCliente != null && !idCliente.isEmpty()){
+			Long id = Long.parseLong(idCliente);
+			String clienteBusca;
+			String statusEntrega;
+			
+			StringBuilder query = new StringBuilder();
+			
+			query.append("FROM Entrega WHERE 1=1");
+			
+			if(Tipo != null && !Tipo.isEmpty()){
+				if(Tipo.equals("Origem")){
+					clienteBusca = "idClienteOrigem.id";
+				}else{
+					clienteBusca = "idClienteDestino.id";
+				}
+				query.append(" AND "+clienteBusca+"= "+id);
+			}
+			
+			if(Status != null && !Status.isEmpty()){
+				if(Status.equals("Definida")){
+					statusEntrega = " IS NOT NULL";
+				}else{
+					statusEntrega = " IS NULL";
+				}
+				query.append(" AND viagem"+statusEntrega);
+			}
+			System.out.println(query.toString());
+			Query q = Entrega.em().createQuery(query.toString());
+			List<Entrega> entregas = q.getResultList();
+			render(entregas,clientes);
+		}
+		else{
+			List<Entrega> entregas = null;
+			render(entregas, clientes);
+		}
 	}
 	
 	public static void cadastrarCliente(String idCliente, String empresa, String cnpj, String telefone,
