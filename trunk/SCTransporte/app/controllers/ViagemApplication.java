@@ -31,9 +31,14 @@ public class ViagemApplication extends Controller {
 		List<Funcionario> motoristas = Funcionario.find("cargo", Cargo.MOTORISTA).fetch();
 		List<Entrega> entregas = null;
 		
-		viagem = new Viagem();
-		Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null");
-		entregas = q.getResultList();
+		if(viagem == null){
+			viagem = new Viagem();
+			Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null ORDER BY data desc");
+			entregas = q.getResultList();
+		}else{
+			Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null OR viagem ="+viagem.getId()+ " ORDER BY data desc");
+			entregas = q.getResultList();
+		}
 		
 		render(viagem, carros,  motoristas, entregas, erros);
 	}
@@ -50,7 +55,7 @@ public class ViagemApplication extends Controller {
 		List<Funcionario> motoristas = Funcionario.find("cargo", Cargo.MOTORISTA).fetch();
 		List<Entrega> entregas = null;
 		
-		Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null OR viagem ="+viagem.getId());
+		Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null OR viagem ="+viagem.getId() + " ORDER BY data desc");
 		entregas = q.getResultList();
 		
 		renderTemplate("/app/views/ViagemApplication/cadastroViagem.html", viagem, carros,  motoristas, entregas);
@@ -61,17 +66,18 @@ public class ViagemApplication extends Controller {
 			
 		List<String> erros = validarCamposObg(idCarro, idMotorista, dataSaida, dataChegada,
 				quilometragemInicial, quilometragemFinal, ents);
-		Viagem viagem = new Viagem();
-		boolean edicao = false;
+		Viagem viagem = null;
+		boolean edicao = idViagem != null && !idViagem.isEmpty();
+		
+		if (edicao) {
+			Long id = Long.parseLong(idViagem);
+			viagem = Viagem.findById(id);
+		}
 		
 		if (erros.isEmpty()) {
 			
 			//Editar
-			if(idViagem != null && !idViagem.isEmpty()){
-				edicao = true;
-				Long id = Long.parseLong(idViagem);
-				viagem = Viagem.findById(id);
-				
+			if(edicao){
 				Carro veiculo = Carro.findById(idCarro);
 				Funcionario motorista = Funcionario.findById(idMotorista);
 				viagem.setCarro(veiculo);
@@ -89,15 +95,23 @@ public class ViagemApplication extends Controller {
 				viagem.setQuilometragemInicial(quilometragemInicial);
 				viagem.setQuilometragemFinal(quilometragemFinal);
 				
+				List<Entrega> old = Entrega.find("viagem", viagem).fetch();
+				
 				viagem.setEntregas(new ArrayList<Entrega>());
 				for (Long idEnt : ents) {
 					Entrega entrega = Entrega.findById(idEnt);
 					entrega.setViagem(viagem);
+					entrega.save();
 					viagem.getEntregas().add(entrega);
 				}
 				
-				JPA.em().detach(viagem);
-				viagem = viagem.merge();
+				for (Entrega entregaOld : old) {
+					if (!viagem.getEntregas().contains(entregaOld)) {
+						entregaOld.setViagem(null);
+						entregaOld.save();
+					}
+				}
+				
 				viagem.save();
 			}
 			
@@ -126,6 +140,7 @@ public class ViagemApplication extends Controller {
 				for (Long idEnt : ents) {
 					Entrega entrega = Entrega.findById(idEnt);
 					entrega.setViagem(viagem);
+					entrega.save();
 					viagem.getEntregas().add(entrega);
 				}
 				
@@ -137,7 +152,7 @@ public class ViagemApplication extends Controller {
 			String msgInformation = "Viagem " + (edicao ? "Editada" : "Cadastrada") +" com sucesso!";
 			Application.menu(Application.getUsuarioLogado(), msgInformation);
 		} else {
-			ViagemApplication.cadastroViagem(null, erros);
+			ViagemApplication.cadastroViagem(viagem, erros);
 		}
 		
 	}
