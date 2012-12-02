@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import play.db.jpa.GenericModel;
 
@@ -54,7 +55,7 @@ public class Viagem extends GenericModel {
 	@Column (name = "data_chegada")
 	private Date dataChegada;
 	
-	@OneToMany (cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "viagem", targetEntity = Entrega.class)
+	@Transient
 	private List<Entrega> entregas;
 
 	public Long getId() {

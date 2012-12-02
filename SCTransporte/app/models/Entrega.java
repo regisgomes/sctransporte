@@ -49,7 +49,7 @@ public class Entrega extends GenericModel{
 	@Column (name = "valor")
 	private Double valor;
 
-	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Viagem.class)
+	@ManyToOne 
 	@JoinColumn (name = "id_viagem")
 	private Viagem viagem;
 	
