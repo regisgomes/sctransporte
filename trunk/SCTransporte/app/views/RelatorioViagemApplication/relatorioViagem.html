@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SC Transportes - Cadastro Usuário</title>
+#{set 'moreStyles'}
+        #{stylesheet 'main.css' /}
+#{/set}
+#{get 'moreStyles' /}
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+        <div id="logomarca">
+        </div><!-- #logomarca-->
+        
+        <div id="titleBar">
+            Cadastro > <span>Viagens</span>
+        </div><!-- #titleBar -->
+        
+        <div id="content">
+       		<div style="color: green; font-weight: bold; text-align: center;">
+        		${msgInformation != null ? msgInformation : ''}
+        	</div>
+        	<div style="width: 680px; margin-bottom: 20px;">
+        		<form action="@{RelatorioViagemApplication.buscar()}" method="post">
+		        	<div style="color: red; font-weight: bold; text-align: center;">
+		        		${msgErro != null ? msgErro : ''}
+		        	</div>
+		            <table width="600" cellpadding="0" cellspacing="5">
+		            	<tr>
+		                    <td valign="top">Veículo:</td>
+		                    <td>
+		                        <select name="idCarro">
+									<option value="0" selected="selected"> -- SELECIONE -- </option>
+									#{list items:carros, as:'carro'}
+										<option value="${carro.id}">${carro.modelo.nome} - ${carro.ano} - ${carro.placa}</option>
+									#{/list}
+								</select>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <td valign="top">Motorista:</td>
+		                    <td>
+		                        <select name="idMotorista">
+									<option value="0" selected="selected"> -- SELECIONE -- </option>
+									#{list items:motoristas, as:'motorista'}
+										<option value="${motorista.id}" >${motorista.usuario.nome}</option>
+									#{/list}
+								</select>
+		                    </td>
+		                </tr>
+		            	<tfoot>
+		            		<tr>
+		            			<td></td>
+		            			<td>
+									<input type="submit" class="button" value="Buscar"/>
+									<a href="@{Application.cancelar()}">
+										<input type="button" class="button" value="Cancelar" />
+									</a>
+								</td>
+							</tr>
+		            	</tfoot>
+	        		</table>
+	        	</form>
+        	</div>
+        	#{if viagens != null}
+	            <table class="listagem" width="680" cellpadding="0" cellspacing="1" align="center">
+	            	<tr>
+	            		<th>Veículo</th>
+	            		<th>Motorista</th>
+	                    <th>Data de Saída</th>
+	                    <th>Data de Chegada</th>
+	                    <th style="text-align: right;">Quilometragem Inicial</th>
+	                    <th style="text-align: right;">Quilometragem Final</th>
+	            	</tr>
+	            	#{list items:viagens, as:'viagem'}
+		                <tr class="${viagem_index % 2 ? 'corForte' : ''}">
+		                    <td style="text-align: center;">${viagem.carro.modelo.nome} - ${viagem.carro.ano} - ${viagem.carro.placa}</td>
+		                    <td style="text-align: center;">${viagem.motorista.usuario.nome}</td>
+	                    	<td style="text-align: center;">${viagem.dataSaidaFormatada}</td>
+		                    <td style="text-align: center;">${viagem.dataChegadaFormatada}</td>
+		                    <td style="text-align: right;">${viagem.quilometragemInicial}</td>
+		                    <td style="text-align: right;">${viagem.quilometragemFinal}</td>
+		                </tr>
+	                #{/list}
+	            </table>
+            #{/if }
+        </div><!-- #content -->
+      
+        <div id="footer">
+        	2012 - SC Transporte - Todos os direitos reservados
+        </div><!-- #footer -->
+        
+	</div><!-- #wrapper -->
+
+</body>
+</html>
