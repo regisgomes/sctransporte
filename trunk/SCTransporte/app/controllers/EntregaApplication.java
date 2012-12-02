@@ -3,6 +3,7 @@ package controllers;
 import java.util.Date;
 import java.util.List;
 
+import models.Cargo;
 import models.Cliente;
 import models.Entrega;
 import models.Funcionario;
@@ -19,6 +20,14 @@ public class EntregaApplication extends Controller{
 		Long id = Long.parseLong(idEntrega);
 		Entrega entrega = Entrega.findById(id);
 		cadastroEntrega(entrega, null);
+	}
+	
+	public static void excluirEntrega(String idEntrega){
+		Long id = Long.parseLong(idEntrega);
+		Entrega entrega = Entrega.findById(id);
+		entrega.delete();
+		String msgInformation = "Entrega excluida com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	
 	public static void cadastroEntrega(Entrega entrega, String msgErro){
@@ -108,7 +117,7 @@ public class EntregaApplication extends Controller{
 			}
 			else{
 				String msgErro = "Informe todos os dados do formulario";
-				cadastroEntrega(null, msgErro);
+				cadastroEntrega(entrega, msgErro);
 			}
 			String msgInformation = "Entrega Cadastrada com sucesso!";
 			listaEntrega(msgInformation);

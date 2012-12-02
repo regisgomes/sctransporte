@@ -46,15 +46,16 @@
 		                    <td style="text-align: center;">${cliente.cnpj}</td>
 		                    <td style="text-align: center;">${cliente.email}</td>
 		                    <td style="text-align: center;">
-		                    	<form action="@{ClienteApplication.alterarCliente}">
+		                    	<form action="@{ClienteApplication.alterarCliente()}">
 		                    		<input type="hidden" name="idCliente" value="${cliente.id}"/>
 		                    		<input type="image" src="/public/img/edit_b.png" name="image" />
 		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
-		                    	<a href="#">
-		                    		<img src="/public/img/delete_b.png" />
-		                    	</a>
+		                    	<form action="@{ClienteApplicaiton.excluirCliente()}" method="post">
+		                    		<input type="hidden" name="idCliente" value="${cliente.id}" />
+		                    		<input type="image" name="image" src="/public/img/delete_b.png" />
+		                    	</form>
 		                    </td>
 		                </tr>
 	                #{/list}

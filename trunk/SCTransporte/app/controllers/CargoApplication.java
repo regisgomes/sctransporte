@@ -6,7 +6,7 @@ import play.mvc.Controller;
 import sun.applet.resources.MsgAppletViewer;
 
 public class CargoApplication extends Controller{
-	
+
 	public static void listaCargo(){
 		List<Cargo> cargos = Cargo.all().fetch();
 		render(cargos);
@@ -18,6 +18,14 @@ public class CargoApplication extends Controller{
 		cadastroCargo(cargo, null);
 	}
 	
+	public static void excluirCargo(String idCargo){
+		Long id = Long.parseLong(idCargo);
+		Cargo cargo = Cargo.findById(id);
+		cargo.delete();
+		String msgInformation = "Cargo excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
+	}
+	
 	public static void cadastroCargo(Cargo cargo, String msgErro){
 		if(cargo == null){
 			cargo = new Cargo();
@@ -26,10 +34,12 @@ public class CargoApplication extends Controller{
 	}
 	
 	public static void cadastrarCargo(String idCargo, String nomeCargo, Double salario){
+		Cargo cargoAux = new Cargo();
 		//Editar
 		if(idCargo != null && !idCargo.isEmpty()){
 			Long id = Long.parseLong(idCargo);
 			Cargo cargo = Cargo.findById(id);
+			cargoAux = cargo;
 			
 			cargo.setNome(nomeCargo);
 			cargo.setSalario(salario);
@@ -41,7 +51,7 @@ public class CargoApplication extends Controller{
 			cargo.save();
 		} else {
 			String msgErro = "Informe o nome e o salario para o Cargo!";
-			cadastroCargo(null, msgErro);
+			cadastroCargo(cargoAux, msgErro);
 		}
 		
 		String msgInformation = "Cargo cadastrado com sucesso!";

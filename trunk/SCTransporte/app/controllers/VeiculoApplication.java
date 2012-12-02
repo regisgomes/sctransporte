@@ -6,6 +6,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Cargo;
 import models.Carro;
 import models.Marca;
 import models.Modelo;
@@ -29,6 +30,14 @@ public class VeiculoApplication extends Controller {
 		cadastroVeiculo(carro, null);
 	}
 	
+	public static void excluirVeiculo(String idVeiculo){
+		Long id = Long.parseLong(idVeiculo);
+		Carro carro = Carro.findById(id);
+		carro.delete();
+		String msgInformation = "Veiculo excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
+	}
+	
 	public static void cadastroVeiculo(Carro carro, List<String> erros) {
 		List<Marca> modelos = Modelo.all().fetch();
 		List<Tipo> tipos = Tipo.all().fetch();
@@ -41,12 +50,13 @@ public class VeiculoApplication extends Controller {
 	public static void cadastrar(String idCarro, Long idModelo, String placa, Integer quilometragem, String cor, Integer ano) {
 		List<String> erros = validarCamposObg(idModelo, placa, quilometragem, cor, ano);
 		
+		Carro veiculo = new Carro();
 		if (erros.isEmpty()) {
 			//Ediçao
 			if(idCarro != null && !idCarro.isEmpty()){
 				Long id = Long.parseLong(idCarro);
 				
-				Carro veiculo = Carro.findById(id);
+				veiculo = Carro.findById(id);
 				Modelo modelo = Modelo.findById(idModelo);
 				
 				veiculo.setModelo(modelo);
@@ -63,7 +73,7 @@ public class VeiculoApplication extends Controller {
 			else{
 				Modelo modelo = Modelo.findById(idModelo);
 				
-				Carro veiculo = new Carro();
+				veiculo = new Carro();
 				veiculo.setModelo(modelo);
 				veiculo.setPlaca(placa);
 				veiculo.setQuilometragem(quilometragem);
@@ -77,7 +87,7 @@ public class VeiculoApplication extends Controller {
 			
 		} 
 		else {
-			cadastroVeiculo(null, erros);
+			cadastroVeiculo(veiculo, erros);
 		}
 		
 	}

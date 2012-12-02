@@ -42,9 +42,10 @@
 		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
-		                    	<a href="#">
-		                    		<img src="/public/img/delete_b.png" />
-		                    	</a>
+		                    	<form action="@{MarcaApplication.excluirMarca()}" method="post">
+		                    		<input type="hidden" name="idMarca" value="${marca.id}" />
+		                    		<inpyt type="image" name="image" src="/public/img/delete_b.png" />
+		                    	</form>
 		                    </td>
 		                </tr>
 	                #{/list}
