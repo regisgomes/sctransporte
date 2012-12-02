@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Cargo;
 import models.Cliente;
 import play.mvc.Controller;
 
@@ -11,6 +12,13 @@ public class ClienteApplication extends Controller{
 		Long id = Long.parseLong(idCliente);
 		Cliente cliente = Cliente.findById(id);
 		cadastroCliente(cliente, null);
+	}
+	public static void excluirCliente(String idCliente){
+		Long id = Long.parseLong(idCliente);
+		Cliente cliente = Cliente.findById(id);
+		cliente.delete();
+		String msgInformation = "Cliente excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	
 	public static void cadastroCliente(Cliente cliente,String msgErro){
@@ -52,7 +60,7 @@ public class ClienteApplication extends Controller{
 			}
 			else{
 				String msgErro = "Informe o nome da empresa e o cnpj";
-				cadastroCliente(null, msgErro);
+				cadastroCliente(cliente, msgErro);
 			}
 			String msgInformation = "Cliente cadastrado com sucesso!";
 			Application.menu(Application.getUsuarioLogado(), msgInformation);

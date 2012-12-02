@@ -5,6 +5,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Cargo;
 import models.Marca;
 import play.mvc.Controller;
 
@@ -24,6 +25,14 @@ public class MarcaApplication extends Controller {
 		Marca marca = Marca.findById(id);
 		cadastroMarca(marca, null);
 	}
+	
+	public static void excluirMarca(String idMarca){
+		Long id = Long.parseLong(idMarca);
+		Marca marca = Marca.findById(id);
+		marca.delete();
+		String msgInformation = "Marca excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
+	}
 
 	public static void cadastroMarca(Marca marca, String msgErro) {
 		if(marca == null)
@@ -33,10 +42,12 @@ public class MarcaApplication extends Controller {
 	}
 	
 	public static void cadastrarMarca(String nomeMarca, String idMarca) {
+		Marca marcaAux = new Marca();
 		if(idMarca != null && !idMarca.isEmpty()){
 			Long id = Long.parseLong(idMarca);
 			System.out.println(idMarca + " : " + id);
 			Marca marca = Marca.findById(id);
+			marcaAux = marca;
 			marca.setNome(nomeMarca);
 			marca.save();
 		}
@@ -45,7 +56,7 @@ public class MarcaApplication extends Controller {
 			marca.save();
 		} else {
 			String msgErro = "Informe o nome para a Marca!";
-			cadastroMarca(null, msgErro);
+			cadastroMarca(marcaAux, msgErro);
 		}
 		
 		String msgInformation = "Marca "+ nomeMarca +" Cadastrada com sucesso!";

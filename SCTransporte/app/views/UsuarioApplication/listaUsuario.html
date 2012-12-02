@@ -44,9 +44,10 @@
 	                    	</form>
 	                    </td>
 	                    <td style="text-align: center;">
-	                    	<a href="#">
-	                    		<img src="/public/img/delete_b.png" />
-	                    	</a>
+	                    	<form action="@{UsuarioApplication.excluirUsuario()}" method="post">
+	                    		<input type="hidden" name="idUsuario" value="${usuario.id}" />
+	                    		<input type="image" name="image" src="/public/img/delete_b.png" />
+	                    	</form>
 	                    </td>
 	                </tr>
 	                #{/list}

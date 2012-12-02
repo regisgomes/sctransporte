@@ -20,6 +20,14 @@ public class FuncionarioApplication extends Controller{
 		cadastroFuncionario(funcionario, null);
 	}
 	
+	public static void excluirFuncionario(String idFuncionario){
+		Long id = Long.parseLong(idFuncionario);
+		Funcionario funcionario = Funcionario.findById(id);
+		funcionario.delete();
+		String msgInformation = "Funcionario excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
+	}
+	
 	public static void cadastroFuncionario(Funcionario funcionario, String msgErro){
 		List<Cargo> cargos = Cargo.all().fetch();
 		List<Usuario> users = Usuario.all().fetch();
@@ -33,6 +41,7 @@ public class FuncionarioApplication extends Controller{
 		String msgInformation;
 		Usuario user = new Usuario();
 		Cargo cargo = new Cargo();
+		Funcionario funcionario = new Funcionario();
 		
 		//Editar
 		if(!idFuncionario.isEmpty() && idFuncionario != null){	
@@ -47,7 +56,7 @@ public class FuncionarioApplication extends Controller{
 				cargo = Cargo.findById(idCarg);
 			}
 			Long id = Long.parseLong(idFuncionario);
-			Funcionario funcionario = Funcionario.findById(id);
+			funcionario = Funcionario.findById(id);
 			funcionario.setCargo(cargo);
 			funcionario.setUsuario(user);
 			funcionario.save();
@@ -61,7 +70,7 @@ public class FuncionarioApplication extends Controller{
 			Long idU = Long.parseLong(idUsuario);
 			user = Usuario.findById(idU);
 			
-			Funcionario funcionario = new Funcionario();
+			funcionario = new Funcionario();
 			funcionario.setCargo(cargo);
 			funcionario.setUsuario(user);
 			

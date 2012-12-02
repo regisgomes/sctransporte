@@ -3,6 +3,7 @@ package controllers;
 
 import java.util.List;
 import play.mvc.Controller;
+import models.Cargo;
 import models.Usuario;
 import sun.applet.resources.MsgAppletViewer;
 
@@ -17,6 +18,14 @@ public class UsuarioApplication extends Controller{
 		Long id = Long.parseLong(idUsuario);
 		Usuario usuario = Usuario.findById(id);
 		cadastroUsuario(usuario, null);
+	}
+	
+	public static void excluirUsuario(String idUsuario){
+		Long id = Long.parseLong(idUsuario);
+		Usuario usuario = Usuario.findById(id);
+		usuario.delete();
+		String msgInformation = "Usuario excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	
 	public static void cadastroUsuario(Usuario usuario, String msgErro){
@@ -54,7 +63,7 @@ public class UsuarioApplication extends Controller{
 			}
 			else{
 				String msgErro = "Informe um login e uma senha para o usuario";
-				cadastroUsuario(null, msgErro);
+				cadastroUsuario(usuario, msgErro);
 			}
 			String msgInformation = "Usuario cadastrado com sucesso!";
 			Application.menu(Application.getUsuarioLogado(), msgInformation);

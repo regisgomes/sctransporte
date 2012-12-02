@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Cargo;
 import models.Marca;
 import models.Tipo;
 import play.mvc.Controller;
@@ -23,6 +24,14 @@ public class TipoVeiculoApplication extends Controller{
 		cadastroTipoVeiculo(tipo, null);
 	}
 	
+	public static void excluirTipo(String idTipo){
+		Long id = Long.parseLong(idTipo);
+		Tipo tipo = Tipo.findById(id);
+		tipo.delete();
+		String msgInformation = "Tipo de Veiculo excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
+	}
+	
 	public static void cadastroTipoVeiculo(Tipo tipo, String msgErro){
 		if(tipo == null){
 			tipo = new Tipo();
@@ -31,22 +40,23 @@ public class TipoVeiculoApplication extends Controller{
 	}
 	
 	public static void cadastrarTipo(String nomeTipo, String idTipo){
+		Tipo tipo = new Tipo();
 		//Condiçao para edicao
 		if(idTipo != null && !idTipo.isEmpty()){
 			Long id = Long.parseLong(idTipo);
-			Tipo tipo = Tipo.findById(id);
+			tipo = Tipo.findById(id);
 			tipo.setNome(nomeTipo);
 			tipo.save();
 		}
 		//Condicao para cadastro
 		else if (nomeTipo != null && !nomeTipo.isEmpty()) {
-			Tipo tipo = new Tipo(nomeTipo);
+			tipo = new Tipo(nomeTipo);
 			tipo.save();
 		}
 		//Condiçao de erro
 		else {
 			String msgErro = "Informe o nome para o Tipo!";
-			cadastroTipoVeiculo(null, msgErro);
+			cadastroTipoVeiculo(tipo, msgErro);
 		}
 		
 		String msgInformation = "Tipo de veiculo cadastrado com sucesso!";

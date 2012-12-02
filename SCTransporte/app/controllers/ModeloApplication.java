@@ -6,6 +6,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Cargo;
 import models.Marca;
 import models.Modelo;
 import models.Tipo;
@@ -28,6 +29,14 @@ public class ModeloApplication extends Controller {
 		cadastroModelo(modelo, null);
 	}
 	
+	public static void excluirModelo(String idModelo){
+		Long id = Long.parseLong(idModelo);
+		Modelo modelo = Modelo.findById(id);
+		modelo.delete();
+		String msgInformation = "Modelo excluido com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
+	}
+	
 	public static void cadastroModelo(Modelo modelo, List<String> erros) {
 		List<Marca> marcas =  Marca.all().fetch();
 		List<Tipo> tipos = Tipo.all().fetch();
@@ -40,6 +49,7 @@ public class ModeloApplication extends Controller {
 	
 	public static void cadastrarModelo(String idModelo, Long idMarca, Long idTipo, String nome) {
 		List<String> erros = new ArrayList<String>();
+		Modelo modelo = new Modelo();
 		if (idMarca == null || idMarca == 0)
 			erros.add("Informe a Marca!");
 		
@@ -54,7 +64,7 @@ public class ModeloApplication extends Controller {
 			if(idModelo != null && !idModelo.isEmpty()){
 				Long id = Long.parseLong(idModelo);
 				
-				Modelo modelo = Modelo.findById(id);
+				modelo = Modelo.findById(id);
 				Marca marca = Marca.findById(idMarca);
 				Tipo tipo = Tipo.findById(idTipo);
 				
@@ -71,7 +81,7 @@ public class ModeloApplication extends Controller {
 				Marca marca = Marca.findById(idMarca);
 				Tipo tipo = Tipo.findById(idTipo);
 				
-				Modelo modelo = new Modelo();
+				modelo = new Modelo();
 				modelo.setMarca(marca);
 				modelo.setTipo(tipo);
 				modelo.setNome(nome);
@@ -82,7 +92,7 @@ public class ModeloApplication extends Controller {
 			}
 		} 
 		else {
-			cadastroModelo(null,erros);
+			cadastroModelo(modelo,erros);
 		}
 	}
 	

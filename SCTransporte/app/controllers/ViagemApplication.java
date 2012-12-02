@@ -48,6 +48,14 @@ public class ViagemApplication extends Controller {
 		render(viagens);
 	}
 	
+	public static void excluirViagem(String idViagem){
+		Long id = Long.parseLong(idViagem);
+		Viagem viagem = Viagem.findById(id);
+		viagem.delete();
+		String msgInformation = "Viagem excluida com sucesso!";
+		Application.menu(Application.getUsuarioLogado(), msgInformation);
+	}
+	
 	public static void alterarViagem(String idViagem){
 		Long id = Long.parseLong(idViagem);
 		Viagem viagem = Viagem.findById(id);

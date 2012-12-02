@@ -42,9 +42,10 @@
 		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
-		                    	<a href="#">
-		                    		<img src="/public/img/delete_b.png" />
-		                    	</a>
+		                    	<form action="@{ModeloApplication.excluirModelo()}" method="post">
+		                    		<input type="hidden" name="idModelo" value="${modelo.id}" />
+		                    		<input type="image" name="image" src="/public/img/delete_b.png" />
+		                    	</form>
 		                    </td>
 		                </tr>
 	                #{/list}
