@@ -18,7 +18,7 @@
         
         <div id="titleBar">
             Relatorio > <span>Clientes</span>
-        </div><!-- #titleBar -->
+        <a class="sair" href="@{Application.index()}">Sair</a> </div><!-- #titleBar -->
         
         <div id="content">
         		<div style="color: green; font-weight: bold; text-align: center;">
@@ -27,35 +27,51 @@
 	        	
 	        	<!-- Filtro de relatorio -->
 	        	<div style="width: 680px; margin-bottom: 20px;">
+	        		<table width="600" cellpadding="0" cellspacing="5">
 	        		<form action="@{ClienteApplication.relatorioCliente()}" method="post">
-	        			Cliente
-	        			<select name="idCliente">
-	        				<option value="">SELECIONE</option>
-	        				#{list items:clientes, as:'cliente'}
-	        					<option value="${cliente.id}">${cliente.empresa}</option>
-	        				#{/list}
-	        			</select>
-	        			<br />
-	        			Tipo de Entrega
-	        			<select name="Tipo">
-	        				<option value="">SELECIONE</option>
-	        				<option value="Origem">Origem</option>
-	        				<option value="Destino">Destino</option>
-	        			</select>
-	        			<br />
-	        			Status da Entrega
-	        			<select name="Status">
-	        				<option value="">SELECIONE</option>
-	        				<option value="Definida">Definida</option>
-	        				<option value="Indefinida">Indefinida</option>
-	        			</select>
-	        			<br />
-	        			<input type="submit" class="button" value="Buscar" name="Buscar" />
+	        			<tr>
+		                    <td valign="top">Cliente:</td>
+		                    <td>
+			        			<select name="idCliente">
+			        				<option value="">SELECIONE</option>
+			        				#{list items:clientes, as:'cliente'}
+			        					<option value="${cliente.id}">${cliente.empresa}</option>
+			        				#{/list}
+			        			</select>
+			        		</td>
+	        			</tr>
 	        			
-	        			<a href="@{Application.cancelar()}">
-							<input type="button" class="button" value="Cancelar" />
-						</a>
+	        			<tr>
+		        			<td valign="top">Tipo de Entrega</td>
+		        			<td>
+			        			<select name="Tipo">
+			        				<option value="">SELECIONE</option>
+			        				<option value="Origem">Origem</option>
+			        				<option value="Destino">Destino</option>
+			        			</select>
+		        			</td>
+	        			</tr>
+	        			
+	        			<tr>
+	        				<td valign="top">Status da Entrega</td>
+	        				<td>
+			        			<select name="Status">
+			        				<option value="">SELECIONE</option>
+			        				<option value="Definida">Definida</option>
+			        				<option value="Indefinida">Indefinida</option>
+			        			</select>
+			        		</td>
+	        			</tr>
+	        			
+	        			<tr>
+	        				<td><input type="submit" class="button" value="Buscar" name="Buscar" />
+			        			<a href="@{Application.cancelar()}">
+									<input type="button" class="button" value="Cancelar" />
+								</a>
+							</td>
+						</tr>
 	        		</form>
+	        		</table>
 	        	</div>
 	        	
 	        	#{if entregas != null}
