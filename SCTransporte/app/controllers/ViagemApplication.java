@@ -144,15 +144,13 @@ public class ViagemApplication extends Controller {
 				viagem.setQuilometragemInicial(quilometragemInicial);
 				viagem.setQuilometragemFinal(quilometragemFinal);
 				
-				viagem.setEntregas(new ArrayList<Entrega>());
+				viagem.save();
+				
 				for (Long idEnt : ents) {
 					Entrega entrega = Entrega.findById(idEnt);
 					entrega.setViagem(viagem);
 					entrega.save();
-					viagem.getEntregas().add(entrega);
 				}
-				
-				viagem.save();
 				
 			}
 			
