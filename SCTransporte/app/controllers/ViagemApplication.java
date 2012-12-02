@@ -10,11 +10,14 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.collection.PersistentBag;
+
 import models.Cargo;
 import models.Carro;
 import models.Entrega;
 import models.Funcionario;
 import models.Viagem;
+import play.db.jpa.JPA;
 import play.mvc.Controller;
 
 /**
@@ -28,16 +31,11 @@ public class ViagemApplication extends Controller {
 		List<Funcionario> motoristas = Funcionario.find("cargo", Cargo.MOTORISTA).fetch();
 		List<Entrega> entregas = null;
 		
-		if(viagem == null){
-			viagem = new Viagem();
-			Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null");
-			entregas = q.getResultList();
-		}else{
-			Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null OR viagem ="+viagem.getId());
-			entregas = q.getResultList();
-		}
+		viagem = new Viagem();
+		Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null");
+		entregas = q.getResultList();
 		
-		render(viagem, carros, motoristas, entregas, erros);
+		render(viagem, carros,  motoristas, entregas, erros);
 	}
 	
 	public static void listaViagem() {
@@ -48,7 +46,14 @@ public class ViagemApplication extends Controller {
 	public static void alterarViagem(String idViagem){
 		Long id = Long.parseLong(idViagem);
 		Viagem viagem = Viagem.findById(id);
-		cadastroViagem(viagem, null);
+		List<Carro> carros = Carro.all().fetch();
+		List<Funcionario> motoristas = Funcionario.find("cargo", Cargo.MOTORISTA).fetch();
+		List<Entrega> entregas = null;
+		
+		Query q = Entrega.em().createQuery("FROM Entrega WHERE viagem is null OR viagem ="+viagem.getId());
+		entregas = q.getResultList();
+		
+		renderTemplate("/app/views/ViagemApplication/cadastroViagem.html", viagem, carros,  motoristas, entregas);
 	}
 	
 	public static void cadastrar(String idViagem, Long idCarro, Long idMotorista, String dataSaida, String dataChegada, 
@@ -57,11 +62,13 @@ public class ViagemApplication extends Controller {
 		List<String> erros = validarCamposObg(idCarro, idMotorista, dataSaida, dataChegada,
 				quilometragemInicial, quilometragemFinal, ents);
 		Viagem viagem = new Viagem();
+		boolean edicao = false;
 		
 		if (erros.isEmpty()) {
 			
 			//Editar
 			if(idViagem != null && !idViagem.isEmpty()){
+				edicao = true;
 				Long id = Long.parseLong(idViagem);
 				viagem = Viagem.findById(id);
 				
@@ -75,22 +82,22 @@ public class ViagemApplication extends Controller {
 					viagem.setDataSaida(dateFormat.parse(dataSaida));
 				} catch (ParseException e) {
 					erros.add("A data deve estar no formato DD/MM/AAAA!");
-					ViagemApplication.cadastroViagem(null, erros);
+					ViagemApplication.cadastroViagem(viagem, erros);
 					return;
 				}
 				
 				viagem.setQuilometragemInicial(quilometragemInicial);
 				viagem.setQuilometragemFinal(quilometragemFinal);
 				
-				List<Entrega> old = viagem.getEntregas();
-				
+				viagem.setEntregas(new ArrayList<Entrega>());
 				for (Long idEnt : ents) {
-					Entrega entrega = new Entrega();
-					entrega.setId(idEnt);
-					if (!old.contains(entrega)) {
-						viagem.getEntregas().add(entrega);
-					}
+					Entrega entrega = Entrega.findById(idEnt);
+					entrega.setViagem(viagem);
+					viagem.getEntregas().add(entrega);
 				}
+				
+				JPA.em().detach(viagem);
+				viagem = viagem.merge();
 				viagem.save();
 			}
 			
@@ -115,17 +122,19 @@ public class ViagemApplication extends Controller {
 				viagem.setQuilometragemInicial(quilometragemInicial);
 				viagem.setQuilometragemFinal(quilometragemFinal);
 				
+				viagem.setEntregas(new ArrayList<Entrega>());
+				for (Long idEnt : ents) {
+					Entrega entrega = Entrega.findById(idEnt);
+					entrega.setViagem(viagem);
+					viagem.getEntregas().add(entrega);
+				}
+				
 				viagem.save();
 				
-				for (Long idEntrega : ents) {
-					Entrega entrega = Entrega.findById(idEntrega);
-					entrega.setViagem(viagem);
-					entrega.save();
-				}
 			}
 			
 			
-			String msgInformation = "Viagem Cadastrada com sucesso!";
+			String msgInformation = "Viagem " + (edicao ? "Editada" : "Cadastrada") +" com sucesso!";
 			Application.menu(Application.getUsuarioLogado(), msgInformation);
 		} else {
 			ViagemApplication.cadastroViagem(null, erros);

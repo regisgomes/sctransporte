@@ -2,8 +2,10 @@ package models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -38,13 +40,16 @@ public class Entrega extends GenericModel{
 	@Column (name="cod_rastreio")
 	private String codRastreio;
 
+	@Column (name = "descricao")
 	private String descricao;
 
+	@Column (name = "volumes")
 	private Integer volumes;
 
+	@Column (name = "valor")
 	private Double valor;
 
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Viagem.class)
 	@JoinColumn (name = "id_viagem")
 	private Viagem viagem;
 	

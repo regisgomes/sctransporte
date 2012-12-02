@@ -3,6 +3,7 @@
  */
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class Viagem extends GenericModel {
 	@Column (name = "data_chegada")
 	private Date dataChegada;
 	
-	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "viagem")
+	@OneToMany (cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "viagem", targetEntity = Entrega.class)
 	private List<Entrega> entregas;
 
 	public Long getId() {
@@ -83,6 +84,15 @@ public class Viagem extends GenericModel {
 	public Date getDataSaida() {
 		return dataSaida;
 	}
+	
+	public String getDataSaidaFormatada() {
+		String dataSaidaFormatada = "";
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		if (dataSaida != null)
+			dataSaidaFormatada = dateFormat.format(dataSaida);
+			
+		return dataSaidaFormatada;
+	}
 
 	public void setDataSaida(Date dataSaida) {
 		this.dataSaida = dataSaida;
@@ -106,6 +116,15 @@ public class Viagem extends GenericModel {
 
 	public Date getDataChegada() {
 		return dataChegada;
+	}
+	
+	public String getDataChegadaFormatada() {
+		String dataChegadaFormatada = "";
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		if (dataChegada != null)
+			dataChegadaFormatada = dateFormat.format(dataChegada);
+			
+		return dataChegadaFormatada;
 	}
 
 	public void setDataChegada(Date dataChegada) {
