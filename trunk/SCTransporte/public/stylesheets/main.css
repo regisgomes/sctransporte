@@ -142,3 +142,41 @@ table.listagem tr.corForte td {
 #image {
 	border: none;
 }
+
+/**** Modificações 02.12.2012 *****/
+
+a.sair {
+	color: #fff;
+	text-decoration: none;
+	float: right;
+	margin-right: 10px;
+}
+
+a.sair:hover {
+	color: #ffe401;
+}
+
+#menuWrap {
+	padding: 10px 80px;
+	float: left;
+}
+
+input.button {
+	text-decoration: none;
+}
+
+input.button2 {
+	background: #F60;
+	border: 0;
+	color: white;
+	padding: 7px 20px;
+	width: 180px;
+	margin: 6px 10px 0px 0px;
+	height: auto;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+input.button2:hover {
+	background: #b01e00;
+}
