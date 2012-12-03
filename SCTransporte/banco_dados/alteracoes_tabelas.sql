@@ -219,3 +219,20 @@ SELECT setval('public.cargo_id_seq', 4, true);
 INSERT INTO cargo(
             id, nome, salario)
     VALUES (1, 'MOTORISTA', 1000);
+    
+
+CREATE SEQUENCE cod_rastreio_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+    
+ALTER TABLE entrega
+   ALTER COLUMN cod_rastreio SET DEFAULT CONCAT(CONCAT(nextval('cod_rastreio_seq'),extract(MONTH FROM CURRENT_DATE)),extract(YEAR FROM CURRENT_DATE));
+
+ALTER TABLE entrega ADD CONSTRAINT uk_cod_rastreio UNIQUE (cod_rastreio);
+
+ALTER TABLE entrega
+   ALTER COLUMN cod_rastreio DROP NOT NULL;
+

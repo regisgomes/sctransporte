@@ -41,8 +41,10 @@ public class TipoVeiculoApplication extends Controller{
 	
 	public static void cadastrarTipo(String nomeTipo, String idTipo){
 		Tipo tipo = new Tipo();
+		boolean edicao = false;
 		//Condiçao para edicao
 		if(idTipo != null && !idTipo.isEmpty()){
+			edicao = true;
 			Long id = Long.parseLong(idTipo);
 			tipo = Tipo.findById(id);
 			tipo.setNome(nomeTipo);
@@ -59,7 +61,7 @@ public class TipoVeiculoApplication extends Controller{
 			cadastroTipoVeiculo(tipo, msgErro);
 		}
 		
-		String msgInformation = "Tipo de veiculo cadastrado com sucesso!";
+		String msgInformation = "Tipo de veiculo " + (edicao ? "editado" : "cadastrado") + " com sucesso!";
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 }

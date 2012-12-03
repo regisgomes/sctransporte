@@ -68,7 +68,7 @@
 	                    <td></td>
 	                    <td>
 	                    	<input type="hidden" name="idCarro" value="${carro.id}" />
-	                        <input type="submit" class="button" value="Cadastrar" />
+	                        <input type="submit" class="button" value="${carro.id > 0 ? 'Editar' : 'Cadastrar'}" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>
 	                </tr>

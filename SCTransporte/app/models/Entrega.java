@@ -37,7 +37,8 @@ public class Entrega extends GenericModel{
 	@Temporal (TemporalType.TIMESTAMP)
 	private Date data;
 
-	@Column (name="cod_rastreio")
+	@GeneratedValue
+	@Column (name="cod_rastreio", insertable = false)
 	private String codRastreio;
 
 	@Column (name = "descricao")
@@ -53,16 +54,15 @@ public class Entrega extends GenericModel{
 	@JoinColumn (name = "id_viagem")
 	private Viagem viagem;
 	
-	public Entrega(String codRastreio, String descricao, Integer volumes,
+	public Entrega(String descricao, Integer volumes,
 			Double valor) {
-		this.codRastreio = codRastreio;
 		this.descricao = descricao;
 		this.volumes = volumes;
 		this.valor = valor;
 	}
 
 	public Entrega(Long id, Cliente idClienteDestino, Cliente idClienteOrigem,
-			Funcionario idFuncionario, Date data, String codRastreio,
+			Funcionario idFuncionario, Date data,
 			String descricao, Integer volumes, Double valor) {
 		super();
 		this.id = id;
@@ -70,7 +70,6 @@ public class Entrega extends GenericModel{
 		this.idClienteOrigem = idClienteOrigem;
 		this.idFuncionario = idFuncionario;
 		this.data = data;
-		this.codRastreio = codRastreio;
 		this.descricao = descricao;
 		this.volumes = volumes;
 		this.valor = valor;

@@ -34,7 +34,7 @@
 	                    <td></td>
 	                    <td>
 	                    	<input type="hidden" name="idTipo" value="${tipo.id}" />
-	                        <input type="submit" class="button" value="Cadastrar" />
+	                        <input type="submit" class="button" value="${tipo.id > 0 ? 'Editar' : 'Cadastrar'}" />
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>
 	                </tr>

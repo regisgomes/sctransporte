@@ -35,8 +35,10 @@ public class CargoApplication extends Controller{
 	
 	public static void cadastrarCargo(String idCargo, String nomeCargo, Double salario){
 		Cargo cargoAux = new Cargo();
+		boolean edicao = false;
 		//Editar
 		if(idCargo != null && !idCargo.isEmpty()){
+			edicao = true;
 			Long id = Long.parseLong(idCargo);
 			Cargo cargo = Cargo.findById(id);
 			cargoAux = cargo;
@@ -54,7 +56,7 @@ public class CargoApplication extends Controller{
 			cadastroCargo(cargoAux, msgErro);
 		}
 		
-		String msgInformation = "Cargo cadastrado com sucesso!";
+		String msgInformation = "Cargo " + (edicao ? "editado" : "cadastrado") + " com sucesso!";
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 }

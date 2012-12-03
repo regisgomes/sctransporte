@@ -44,7 +44,7 @@
 		                    <td style="text-align: center;">
 		                    	<form action="@{ModeloApplication.excluirModelo()}" method="post">
 		                    		<input type="hidden" name="idModelo" value="${modelo.id}" />
-		                    		<input type="image" name="image" src="/public/img/delete_b.png" />
+		                    		<input type="image" name="image" src="/public/img/delete_b.png" onclick="return confirm('Deseja realmente realizar esta remoção?');"/>
 		                    	</form>
 		                    </td>
 		                </tr>

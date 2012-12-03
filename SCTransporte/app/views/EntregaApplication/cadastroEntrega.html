@@ -74,10 +74,10 @@
 							</select>
 	                    </td>
 	                </tr>
-	                <tr>
+	                <!-- tr>
 	                    <td valign="top">Codigo para rastreio:</td>
 	                    <td><input class="input" type="text" name="codRastreio" value="${entrega.codRastreio}"/></td>
-	                </tr>
+	                </tr -->
 	                <tr>
 	                    <td valign="top">Descricao:</td>
 	                    <td><input class="input" type="text" name="descricao" value="${entrega.descricao}"/></td>
@@ -94,7 +94,7 @@
 	                    <td></td>
 	                    <td>
 	                    	<input type="hidden" value="${entrega.id}" name="idEntrega" />
-	                        <input type="submit" class="button" value="Cadastrar" />
+	                        <input type="submit" class="button" value="${entrega.id > 0 ? 'Editar' : 'Cadastrar'}" />
 	                        <a href="@{EntregaApplication.listaEntrega()}"><input type="button" class="button" value="Voltar" /></a>
 	                        <a href="@{Application.cancelar()}"><input type="button" class="button" value="Cancelar" /></a>
 	                    </td>

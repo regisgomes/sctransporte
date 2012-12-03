@@ -54,7 +54,7 @@
 		                    <td style="text-align: center;">
 		                    	<form action="@{ClienteApplication.excluirCliente()}" method="post">
 		                    		<input type="hidden" name="idCliente" value="${cliente.id}" />
-		                    		<input type="image" name="image" src="/public/img/delete_b.png" />
+		                    		<input type="image" name="image" src="/public/img/delete_b.png" onclick="return confirm('Deseja realmente realizar esta remoção?');"/>
 		                    	</form>
 		                    </td>
 		                </tr>

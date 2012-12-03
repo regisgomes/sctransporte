@@ -50,7 +50,16 @@ public class ViagemApplication extends Controller {
 	
 	public static void excluirViagem(String idViagem){
 		Long id = Long.parseLong(idViagem);
+		
 		Viagem viagem = Viagem.findById(id);
+		
+		List<Entrega> entregas = Entrega.find("viagem", viagem).fetch();
+		
+		for (Entrega entrega : entregas){
+			entrega.setViagem(null);
+			entrega.save();
+		}
+				
 		viagem.delete();
 		String msgInformation = "Viagem excluida com sucesso!";
 		Application.menu(Application.getUsuarioLogado(), msgInformation);

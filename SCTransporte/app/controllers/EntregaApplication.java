@@ -7,6 +7,7 @@ import models.Cargo;
 import models.Cliente;
 import models.Entrega;
 import models.Funcionario;
+import play.db.jpa.JPA;
 import play.mvc.Controller;
 
 public class EntregaApplication extends Controller{
@@ -43,6 +44,7 @@ public class EntregaApplication extends Controller{
 			Long idFuncionario, String codRastreio, String descricao, Integer volumes, Double valor){
 		
 		Entrega entrega = new Entrega();
+		
 		//EDITAR
 		if(idEntrega != null && !idEntrega.isEmpty()){
 			Long id = Long.parseLong(idEntrega);
@@ -75,8 +77,6 @@ public class EntregaApplication extends Controller{
 				entrega.setIdFuncionario(null);
 			}
 			
-			//codRastreio
-			entrega.setCodRastreio(codRastreio);
 			//descricao
 			entrega.setDescricao(descricao);
 			//volumes
@@ -92,10 +92,9 @@ public class EntregaApplication extends Controller{
 		
 		//INSERIR
 		else{
-			if(idClienteDestino != null && idClienteOrigem != null && idFuncionario != null && codRastreio != null 
-					&& !codRastreio.isEmpty() && descricao != null && !descricao.isEmpty() && volumes != null && valor != null){
+			if(idClienteDestino != null && idClienteOrigem != null && idFuncionario != null && descricao != null && !descricao.isEmpty() && volumes != null && valor != null){
 				
-				entrega = new Entrega(codRastreio, descricao, volumes, valor);
+				entrega = new Entrega(descricao, volumes, valor);
 				
 				Cliente origem = Cliente.findById(idClienteOrigem);
 				Cliente destino = Cliente.findById(idClienteDestino);
@@ -106,7 +105,6 @@ public class EntregaApplication extends Controller{
 				entrega.setIdClienteOrigem(origem);
 				entrega.setIdFuncionario(func);
 				
-				entrega.setCodRastreio(codRastreio);
 				entrega.setDescricao(descricao);
 				entrega.setVolumes(volumes);
 				entrega.setValor(valor);
