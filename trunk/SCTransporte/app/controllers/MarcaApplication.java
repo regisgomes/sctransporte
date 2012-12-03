@@ -7,6 +7,7 @@ import java.util.List;
 
 import models.Cargo;
 import models.Marca;
+import models.Modelo;
 import play.mvc.Controller;
 
 /**
@@ -29,8 +30,15 @@ public class MarcaApplication extends Controller {
 	public static void excluirMarca(String idMarca){
 		Long id = Long.parseLong(idMarca);
 		Marca marca = Marca.findById(id);
-		marca.delete();
-		String msgInformation = "Marca excluido com sucesso!";
+		Modelo modelo = Modelo.find("marca", marca).first();
+		String msgInformation;
+		if(modelo == null){
+			marca.delete();
+			msgInformation = "Marca excluido com sucesso!";
+		}else{
+			msgInformation = "Esta marca nao pode ser apagado pois ja esta vinculada a um veiculo!";
+		}
+		
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 

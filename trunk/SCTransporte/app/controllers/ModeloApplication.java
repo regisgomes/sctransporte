@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Cargo;
+import models.Carro;
 import models.Marca;
 import models.Modelo;
 import models.Tipo;
@@ -32,8 +33,14 @@ public class ModeloApplication extends Controller {
 	public static void excluirModelo(String idModelo){
 		Long id = Long.parseLong(idModelo);
 		Modelo modelo = Modelo.findById(id);
-		modelo.delete();
-		String msgInformation = "Modelo excluido com sucesso!";
+		Carro carro = Carro.find("modelo", modelo).first();
+		String msgInformation;
+		if(carro == null){
+			modelo.delete();
+			msgInformation = "Modelo excluido com sucesso!";
+		}else{
+			msgInformation = "Este modelo nao pode ser apagado pois ja esta vinculado a um veiculo";
+		}
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	

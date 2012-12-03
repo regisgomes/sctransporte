@@ -2,6 +2,7 @@ package controllers;
 import java.util.List;
 
 import models.Cargo;
+import models.Funcionario;
 import play.mvc.Controller;
 import sun.applet.resources.MsgAppletViewer;
 
@@ -21,8 +22,14 @@ public class CargoApplication extends Controller{
 	public static void excluirCargo(String idCargo){
 		Long id = Long.parseLong(idCargo);
 		Cargo cargo = Cargo.findById(id);
-		cargo.delete();
-		String msgInformation = "Cargo excluido com sucesso!";
+		Funcionario funcionario = Funcionario.find("cargo", cargo).first();
+		String msgInformation;
+		if(funcionario == null){
+			cargo.delete();
+			msgInformation = "Cargo excluido com sucesso!";
+		}else{
+			msgInformation = "Este cargo nao pode ser apagado pois ja esta vinculado a um funcionario";
+		}
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	

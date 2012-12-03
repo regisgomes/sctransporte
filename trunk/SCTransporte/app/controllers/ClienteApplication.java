@@ -36,44 +36,37 @@ public class ClienteApplication extends Controller{
 		render(clientes);
 	}
 	
-	public static void relatorioCliente(String idCliente, String Tipo, String Status){
+	public static void relatorioCliente(String idClienteOrigem, String idClienteDestino, String Status){
 		List<Cliente> clientes = Cliente.all().fetch();
+		List<Entrega> entregas = null;
 
-		if(idCliente != null && !idCliente.isEmpty()){
-			Long id = Long.parseLong(idCliente);
-			String clienteBusca;
-			String statusEntrega;
-			
-			StringBuilder query = new StringBuilder();
-			
-			query.append("FROM Entrega WHERE 1=1");
-			
-			if(Tipo != null && !Tipo.isEmpty()){
-				if(Tipo.equals("Origem")){
-					clienteBusca = "idClienteOrigem.id";
-				}else{
-					clienteBusca = "idClienteDestino.id";
-				}
-				query.append(" AND "+clienteBusca+"= "+id);
-			}
-			
-			if(Status != null && !Status.isEmpty()){
-				if(Status.equals("Definida")){
-					statusEntrega = " IS NOT NULL";
-				}else{
-					statusEntrega = " IS NULL";
-				}
-				query.append(" AND viagem"+statusEntrega);
-			}
-			System.out.println(query.toString());
-			Query q = Entrega.em().createQuery(query.toString());
-			List<Entrega> entregas = q.getResultList();
-			render(entregas,clientes);
+		StringBuilder query = new StringBuilder();
+		
+		query.append("FROM Entrega WHERE 1=1");
+		String statusEntrega;
+		
+		if(idClienteOrigem != null && !idClienteOrigem.isEmpty()){
+			Long id = Long.parseLong(idClienteOrigem);
+			query.append(" AND idClienteOrigem.id= "+id);
 		}
-		else{
-			List<Entrega> entregas = null;
-			render(entregas, clientes);
+		
+		if(idClienteDestino != null && !idClienteDestino.isEmpty()){
+			Long id = Long.parseLong(idClienteDestino);
+			query.append(" AND idClienteDestino.id= "+id);
 		}
+		
+		if(Status != null && !Status.isEmpty()){
+			if(Status.equals("Definida")){
+				statusEntrega = " IS NOT NULL";
+			}else{
+				statusEntrega = " IS NULL";
+			}
+			query.append(" AND viagem" + statusEntrega);
+		}
+		Query q = Entrega.em().createQuery(query.toString());
+		entregas = q.getResultList();
+		render(entregas, clientes);
+		
 	}
 	
 	public static void cadastrarCliente(String idCliente, String empresa, String cnpj, String telefone,
