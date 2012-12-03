@@ -50,9 +50,9 @@
 		                    	</form>
 		                    </td>
 		                    <td style="text-align: center;">
-		                    	<form action="@{ViagemApplication.excluirViagem()}" method="post">
+		                    	<form action="@{ViagemApplication.excluirViagem()}" method="post" >
 		                    		<input type="hidden" name="idViagem" value="${viagem.id}" />
-		                    		<input type="image" name="image" src="/public/img/delete_b.png" />
+		                    		<input type="image" name="image" src="/public/img/delete_b.png" onclick="return confirm('Deseja realmente realizar esta remoção?');"/>
 		                    	</form>
 		                    </td>
 		                </tr>

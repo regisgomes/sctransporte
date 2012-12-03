@@ -44,7 +44,7 @@
 		                    <td style="text-align: center;">
 		                    	<form action="@{MarcaApplication.excluirMarca()}" method="post">
 		                    		<input type="hidden" name="idMarca" value="${marca.id}" />
-		                    		<inpyt type="image" name="image" src="/public/img/delete_b.png" />
+		                    		<inpyt type="image" name="image" src="/public/img/delete_b.png" onclick="return confirm('Deseja realmente realizar esta remoção?');"/>
 		                    	</form>
 		                    </td>
 		                </tr>

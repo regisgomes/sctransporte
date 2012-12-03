@@ -73,7 +73,7 @@ public class ModeloApplication extends Controller {
 				modelo.setNome(nome);
 				modelo.save();
 				
-				String msgInformation = "Modelo " + modelo.getNome() + " Cadastrado com sucesso!";
+				String msgInformation = "Modelo " + modelo.getNome() + " Editado com sucesso!";
 				Application.menu(Application.getUsuarioLogado(), msgInformation);
 			}
 			//Cadastro
