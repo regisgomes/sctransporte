@@ -30,9 +30,9 @@
 	        		<table width="600" cellpadding="0" cellspacing="5">
 	        		<form action="@{ClienteApplication.relatorioCliente()}" method="post">
 	        			<tr>
-		                    <td valign="top">Cliente:</td>
+		                    <td valign="top">Cliente Origem:</td>
 		                    <td>
-			        			<select name="idCliente">
+			        			<select name="idClienteOrigem">
 			        				<option value="">SELECIONE</option>
 			        				#{list items:clientes, as:'cliente'}
 			        					<option value="${cliente.id}">${cliente.empresa}</option>
@@ -42,12 +42,13 @@
 	        			</tr>
 	        			
 	        			<tr>
-		        			<td valign="top">Tipo de Entrega</td>
+		        			<td valign="top">Cliente Destino:</td>
 		        			<td>
-			        			<select name="Tipo">
+			        			<select name="idClienteDestino">
 			        				<option value="">SELECIONE</option>
-			        				<option value="Origem">Origem</option>
-			        				<option value="Destino">Destino</option>
+			        				#{list items:clientes, as:'cliente'}
+			        					<option value="${cliente.id}">${cliente.empresa}</option>
+			        				#{/list}
 			        			</select>
 		        			</td>
 	        			</tr>

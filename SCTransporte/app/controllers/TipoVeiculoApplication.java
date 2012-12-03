@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Cargo;
 import models.Marca;
+import models.Modelo;
 import models.Tipo;
 import play.mvc.Controller;
 
@@ -27,8 +28,14 @@ public class TipoVeiculoApplication extends Controller{
 	public static void excluirTipo(String idTipo){
 		Long id = Long.parseLong(idTipo);
 		Tipo tipo = Tipo.findById(id);
-		tipo.delete();
-		String msgInformation = "Tipo de Veiculo excluido com sucesso!";
+		Modelo modelo = Modelo.find("tipo", tipo).first();
+		String msgInformation;
+		if(modelo == null){
+			tipo.delete();
+			msgInformation = "Tipo de Veiculo excluido com sucesso!";
+		}else{
+			msgInformation = "Este tipo nao pode ser apagado pois ja esta vinculado a um modelo";
+		}
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	

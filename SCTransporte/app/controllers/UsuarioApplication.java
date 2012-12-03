@@ -4,6 +4,7 @@ package controllers;
 import java.util.List;
 import play.mvc.Controller;
 import models.Cargo;
+import models.Funcionario;
 import models.Usuario;
 import sun.applet.resources.MsgAppletViewer;
 
@@ -23,8 +24,14 @@ public class UsuarioApplication extends Controller{
 	public static void excluirUsuario(String idUsuario){
 		Long id = Long.parseLong(idUsuario);
 		Usuario usuario = Usuario.findById(id);
-		usuario.delete();
-		String msgInformation = "Usuario excluido com sucesso!";
+		Funcionario funcionario = Funcionario.find("usuario", usuario).first();
+		String msgInformation;
+		if(funcionario == null){
+			usuario.delete();
+			msgInformation = "Usuario excluido com sucesso!";
+		}else{
+			msgInformation = "Este usuario nao pode ser apagado pois ja esta vinculado a um funcionario";
+		}
 		Application.menu(Application.getUsuarioLogado(), msgInformation);
 	}
 	
