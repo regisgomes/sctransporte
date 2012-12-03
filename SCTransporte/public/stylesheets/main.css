@@ -46,6 +46,12 @@ body {
 	text-indent: 40px;
 }
 
+#login table tr td.rastreio {
+	background: url(../img/rastreio.png) no-repeat 70px 0px;
+	height: 48px;
+	text-indent: 40px;
+}
+
 input.input {
 	height: 20px;
 	width: 198px;
