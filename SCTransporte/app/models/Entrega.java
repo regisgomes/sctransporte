@@ -169,7 +169,7 @@ public class Entrega extends GenericModel{
 			return "Viagem Definida";
 		}
 		//Em transporte
-		else if(viagem.getDataSaida().before(new Date()) || viagem.getDataSaida().equals(new Date()) && viagem.getDataChegada().after(new Date())){
+		else if((viagem.getDataSaida().before(new Date()) || viagem.getDataSaida().equals(new Date())) && viagem.getDataChegada().after(new Date())){
 			return "Em transporte";
 		}
 		//Concluida
