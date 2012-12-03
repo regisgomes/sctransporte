@@ -162,11 +162,11 @@ public class Entrega extends GenericModel{
 	public String getStatus(){
 		//Indefinido
 		if(viagem == null){
-			return "Indefinida";
+			return "Viagem Indefinida";
 		}
 		//Definida
 		else if(viagem.getDataSaida().after(new Date())){
-			return "Definida";
+			return "Viagem Definida";
 		}
 		//Em transporte
 		else if(viagem.getDataSaida().before(new Date()) || viagem.getDataSaida().equals(new Date()) && viagem.getDataChegada().after(new Date())){
@@ -174,7 +174,7 @@ public class Entrega extends GenericModel{
 		}
 		//Concluida
 		else{
-			return "Concluida";
+			return "Entrega Concluída";
 		}
 	}
 	

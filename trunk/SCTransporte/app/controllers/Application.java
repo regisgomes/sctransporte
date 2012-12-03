@@ -29,6 +29,18 @@ public class Application extends Controller {
     	}
     }
     
+    public static void rastrear(String codRastreio) {
+    	
+    	Entrega entrega = Entrega.find("codRastreio", codRastreio).first();
+    	
+    	String erroRastreio = null;
+    	
+    	if (entrega == null)
+    		erroRastreio = "Entrega não encontrada!";
+    	
+    	renderTemplate("/app/views/Application/index.html", entrega, erroRastreio);
+    }
+    
     public static void menu(Usuario user, String msgInformation) {
    		render(user, msgInformation);
     }
