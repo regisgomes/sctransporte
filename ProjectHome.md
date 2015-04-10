@@ -1,0 +1,1 @@
+O sistema deverá ser responsável por administrar o controle da frota de veículos da empresa, contando com funções como cadastro dos veículos e motoristas, ficha de manutenções dos veículos além da localização e disponibilidade dos mesmos para novas entregas.
